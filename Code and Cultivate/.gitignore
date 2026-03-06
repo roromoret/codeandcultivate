@@ -1,0 +1,69 @@
+# ==========================================================
+# DOSSIERS ET FICHIERS GÉNÉRÉS PAR UNITY (Ne pas versionner)
+# ==========================================================
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+
+# Fichiers de crash et logs divers
+sysinfo.txt
+crashlytics-build.properties
+
+# Fichiers de builds (exécutables, apps mobiles, etc.)
+*.apk
+*.aab
+*.unitypackage
+*.app
+
+# ==========================================================
+# IDE ET OUTILS DE DÉVELOPPEMENT
+# ==========================================================
+
+# Fichiers générés par Visual Studio / MonoDevelop
+.vs/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Méta-fichiers générés pour les fichiers d'IDE cachés
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# Visual Studio Code
+.vscode/
+
+# JetBrains Rider
+.idea/
+/[Aa]ssets/Plugins/Editor/JetBrains*
+
+# Gradle (Si tu fais des builds Android)
+.gradle/
+
+# ==========================================================
+# FICHIERS SYSTÈMES D'EXPLOITATION (Windows / macOS)
+# ==========================================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

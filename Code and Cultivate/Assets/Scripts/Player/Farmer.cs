@@ -36,15 +36,25 @@ public class Farmer : MonoBehaviour, IFarmerActions
     {
         if (IsBusy) return;
 
-        Vector3 target = WorldGrid.Instance.SnapToGrid(transform.position + direction);
-        // TODO: check if is walkable before moving
-        StartCoroutine(MoveRoutine(target));
+        Vector3 targetWorld    = WorldGrid.Instance.SnapToGrid(transform.position + direction);
+        Vector2Int targetTile  = WorldGrid.Instance.WorldToTile(targetWorld);
+        
+        Debug.Log($"[Farmer] Attempting to move to tile {targetTile}");
+
+        if (!TileDataManager.Instance.IsWalkable(targetTile)) 
+        {   
+            Debug.Log($"[Farmer] Tile {targetTile} is not walkable - move blocked");
+            return;
+        }
+
+        StartCoroutine(MoveRoutine(targetWorld));
     }
 
     private IEnumerator MoveRoutine(Vector3 target)
     {
         IsBusy = true;
 
+        Vector2Int previousTile = WorldGrid.Instance.WorldToTile(transform.position);
         Vector3 start = transform.position;
         float   dist  = Vector3.Distance(start, target);
         float   duration = dist / moveSpeed;
@@ -59,6 +69,11 @@ public class Farmer : MonoBehaviour, IFarmerActions
 
         transform.position = target;
 
+        // Notify tile manager when the farmer moves
+        Vector2Int currentTile = WorldGrid.Instance.WorldToTile(transform.position);
+        TileDataManager.Instance.SetFarmerPosition(previousTile, currentTile);
+
+        yield return new WaitForSeconds(0.2f);
         IsBusy = false;
     }
 

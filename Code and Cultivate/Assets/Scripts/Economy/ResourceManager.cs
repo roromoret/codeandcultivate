@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Mono.Cecil;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public class ResourceManager : MonoBehaviour
     [SerializeField] private ResourceConfig config;
     private Dictionary<ResourceType, int> _resources = new();
     public event Action<ResourceType, int> OnResourceChanged;
+    private Dictionary<ResourceType, ResourceConfig.ResourceEntry> _configLookup;
 
     // Init
     private void Awake()
@@ -31,6 +33,13 @@ public class ResourceManager : MonoBehaviour
     private void InitialiseResources()
     {
         _resources.Clear();
+
+        if (config != null) _configLookup = config.BuildLookup();
+        else
+        {
+            Debug.LogWarning("[ResourceManager] No ResourceConfig assigned");
+            _configLookup = new();
+        }
 
         // Seed every ResourceType to 0 so keys exist
         foreach (ResourceType type in Enum.GetValues(typeof(ResourceType)))
@@ -69,7 +78,7 @@ public class ResourceManager : MonoBehaviour
         Debug.Log($"[ResourceManager] +{amount} {type} -> total: {_resources[type]}");
         OnResourceChanged?.Invoke(type, _resources[type]);
     }
-
+    
     public bool Spend(ResourceType type, int amount)
     {
         if (amount <= 0)
@@ -92,4 +101,17 @@ public class ResourceManager : MonoBehaviour
 
     public bool CanAfford(ResourceType type, int amount)
         => _resources.TryGetValue(type, out int current) && current >= amount;
+
+
+    public Sprite GetIcon(ResourceType type)
+    {
+        _configLookup.TryGetValue(type, out ResourceConfig.ResourceEntry entry);
+        return entry?.icon;
+    }
+
+    public string GetDisplayName(ResourceType type)
+    {
+        _configLookup.TryGetValue(type, out ResourceConfig.ResourceEntry entry);
+        return entry?.displayName ?? type.ToString();
+    }
 }

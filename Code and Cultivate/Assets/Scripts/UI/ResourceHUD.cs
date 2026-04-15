@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class ResourceHUD : MonoBehaviour
@@ -10,14 +11,12 @@ public class ResourceHUD : MonoBehaviour
     {
         public ResourceType type;
         public TMP_Text     label;      // e.g. "Fruits: 0"
+        public Image        icon;       // assign in inspector
     }
 
     [SerializeField] private List<ResourceDisplay> displays;
 
-    private void OnEnable()
-    {
-        StartCoroutine(SubscribeWhenReady());
-    }
+    private void OnEnable() => StartCoroutine(SubscribeWhenReady());
 
     private void OnDisable()
     {
@@ -29,7 +28,6 @@ public class ResourceHUD : MonoBehaviour
     private IEnumerator SubscribeWhenReady()
     {
         yield return new WaitUntil(() => ResourceManager.Instance != null);
-
         ResourceManager.Instance.OnResourceChanged += HandleResourceChanged;
         RefreshAll();
     }
@@ -49,11 +47,24 @@ public class ResourceHUD : MonoBehaviour
     private void RefreshAll()
     {
         foreach (ResourceDisplay display in displays)
+        { 
             UpdateLabel(display, ResourceManager.Instance.Get(display.type));
+            ApplyIcon(display);
+        }
     }
 
     private void UpdateLabel(ResourceDisplay display, int amount)
     {
-        display.label.text = $"{display.type}: {amount}";
+        string name = ResourceManager.Instance.GetDisplayName(display.type);
+        display.label.text = $"{name}: {amount}";
+    }
+
+    private void ApplyIcon(ResourceDisplay display)
+    {
+        if (display.icon == null) return;
+
+        Sprite icon = ResourceManager.Instance.GetIcon(display.type);
+        if (icon != null) display.icon.sprite = icon;
+        else display.icon.gameObject.SetActive(false);
     }
 }

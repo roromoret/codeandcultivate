@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 0
+    m_Top: 20
     m_Bottom: 0
   m_ChildAlignment: 0
   m_Spacing: 0
@@ -556,7 +556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8349056, g: 0.094517596, b: 0.094517596, a: 1}
+  m_Color: {r: 0.7924528, g: 0.2690772, b: 0.25792095, a: 0.78039217}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -645,7 +645,7 @@ MonoBehaviour:
   m_MinWidth: -1
   m_MinHeight: -1
   m_PreferredWidth: -1
-  m_PreferredHeight: 30
+  m_PreferredHeight: 40
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
@@ -800,6 +800,7 @@ GameObject:
   - component: {fileID: 6455337886177697214}
   - component: {fileID: 143724506755455768}
   - component: {fileID: 2603056655617999117}
+  - component: {fileID: 329907376460899433}
   m_Layer: 5
   m_Name: DropZone
   m_TagString: Untagged
@@ -929,3 +930,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding: {x: 0, y: 0, z: 0, w: 0}
   m_Softness: {x: 0, y: 0}
+--- !u!114 &329907376460899433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9169766109965860541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b096a658ae4d858e1b1d3a74c20ed9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blocksContent: {fileID: 4575350468259264972}

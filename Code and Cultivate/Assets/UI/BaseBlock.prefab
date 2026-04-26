@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8656760273985105850}
   - component: {fileID: 3962520089023173939}
   - component: {fileID: 2752477918222343430}
+  - component: {fileID: 247208059044350848}
   m_Layer: 5
   m_Name: BaseBlock
   m_TagString: Untagged
@@ -93,7 +94,7 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: 300
+  m_PreferredWidth: 200
   m_PreferredHeight: 100
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
@@ -125,3 +126,19 @@ MonoBehaviour:
   isPaletteBlock: 1
   parentToReturnTo: {fileID: 0}
   placeholderParent: {fileID: 0}
+  isToBeDeleted: 0
+--- !u!114 &247208059044350848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6801879700861647502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26a6f1983b534cf18543c2aa22e1700f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightColor: {r: 0.14310157, g: 0.8632076, b: 0.016286923, a: 1}
+  executionTime: 0.5
+  outlineThickness: 6

@@ -3,6 +3,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
+using UnityEngine.Rendering;
+using UnityEngine.Playables;
 
 public class ResourceHUD : MonoBehaviour
 {
@@ -12,9 +15,14 @@ public class ResourceHUD : MonoBehaviour
         public ResourceType type;
         public TMP_Text     label;      // e.g. "Fruits: 0"
         public Image        icon;       // assign in inspector
+        public RectTransform notificationSpawnPoint;
+
+        // Tracked internally
+        [HideInInspector] public int previousAmount;
     }
 
-    [SerializeField] private List<ResourceDisplay> displays;
+    [SerializeField] private List<ResourceDisplay>     displays;
+    [SerializeField] private ResourceDeltaNotification notificationPrefab;
 
     private void OnEnable() => StartCoroutine(SubscribeWhenReady());
 
@@ -36,18 +44,23 @@ public class ResourceHUD : MonoBehaviour
     {
         foreach (ResourceDisplay display in displays)
         {
-            if (display.type == type)
-            {
-                UpdateLabel(display, newAmount);
-                return;
-            }
+            if (display.type != type) continue; 
+            
+            int delta = newAmount - display.previousAmount;
+            display.previousAmount = newAmount;
+
+            UpdateLabel(display, newAmount);
+            SpawnNotification(display, delta);
+            return;
         }
     }
 
     private void RefreshAll()
     {
         foreach (ResourceDisplay display in displays)
-        { 
+        {
+            int amount = ResourceManager.Instance.Get(display.type);
+            display.previousAmount = amount;
             UpdateLabel(display, ResourceManager.Instance.Get(display.type));
             ApplyIcon(display);
         }
@@ -66,5 +79,20 @@ public class ResourceHUD : MonoBehaviour
         Sprite icon = ResourceManager.Instance.GetIcon(display.type);
         if (icon != null) display.icon.sprite = icon;
         else display.icon.gameObject.SetActive(false);
+    }
+
+    private void SpawnNotification(ResourceDisplay display, int delta)
+    {
+        if (notificationPrefab == null) return;
+        if (display.notificationSpawnPoint == null) return;
+
+        ResourceDeltaNotification notif = Instantiate(
+            notificationPrefab,
+            display.notificationSpawnPoint.position,
+            Quaternion.identity,
+            display.notificationSpawnPoint);
+
+        notif.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+        notif.Play(delta);
     }
 }

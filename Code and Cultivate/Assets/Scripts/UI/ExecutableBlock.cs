@@ -4,7 +4,7 @@ using System.Collections;
 
 public class ExecutableBlock : MonoBehaviour
 {
-    private Outline highlightOutline;
+    protected Outline highlightOutline;
     
     public Color highlightColor = Color.yellow;
     public float executionTime = 0.5f;

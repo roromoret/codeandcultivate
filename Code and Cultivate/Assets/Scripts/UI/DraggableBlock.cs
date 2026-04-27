@@ -9,6 +9,9 @@ public class DraggableBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     [HideInInspector] public Transform parentToReturnTo = null;
     [HideInInspector] public Transform placeholderParent = null;
     [HideInInspector] public bool isToBeDeleted = false;
+    
+    [Header("Drag & Drop Settings")]
+    public float fixedPlaceholderHeight = 50f;
 
     private GameObject placeholder = null;
     private CanvasGroup canvasGroup;
@@ -44,7 +47,7 @@ public class DraggableBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         
         LayoutElement le = placeholder.AddComponent<LayoutElement>();
         le.preferredWidth = this.GetComponent<LayoutElement>().preferredWidth;
-        le.preferredHeight = this.GetComponent<LayoutElement>().preferredHeight;
+        le.preferredHeight = fixedPlaceholderHeight;
         le.flexibleWidth = 0;
         le.flexibleHeight = 0;
 
@@ -89,6 +92,7 @@ public class DraggableBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         {
             Destroy(placeholder);
             Destroy(this.gameObject);
+            Canvas.ForceUpdateCanvases();
             return;
         }
 
@@ -96,6 +100,7 @@ public class DraggableBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         {
             Destroy(placeholder);
             Destroy(this.gameObject);
+            Canvas.ForceUpdateCanvases();
             return;
         }
 
@@ -105,5 +110,6 @@ public class DraggableBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         this.transform.localScale = Vector3.one;
 
         Destroy(placeholder);
+        Canvas.ForceUpdateCanvases();
     }
 }

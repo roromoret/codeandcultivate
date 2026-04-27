@@ -3,12 +3,32 @@ using UnityEngine;
 
 public class Farmer : MonoBehaviour, IFarmerActions
 {
+
+
+    public static Farmer Instance { get; private set; }
+
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 8f; // units per second during tween
 
     // IFarmerActions.IsBusy — block executor must check this before issuing the next command
     public bool IsBusy { get; private set; }
     
+    // Initilization of the singleton in Awake to ensure it happens before any Start methods try to access it
+    private void Awake()
+{
+    if (Instance != null && Instance != this)
+    {
+        Destroy(gameObject);
+        return;
+    }
+    
+    Instance = this;
+}
+
+
+
+
+
     // 
     // IFarmerActions Implementation
     //

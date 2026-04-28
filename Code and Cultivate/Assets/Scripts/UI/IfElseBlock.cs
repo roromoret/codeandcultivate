@@ -6,6 +6,7 @@ public class IfElseBlock : ConditionalBlock
     public Transform ifContent;
     public Transform elseContent;
 
+    //Override the basic execution method ibn order to check for the condition
     public override IEnumerator Execute()
     {
         highlightOutline.enabled = true;

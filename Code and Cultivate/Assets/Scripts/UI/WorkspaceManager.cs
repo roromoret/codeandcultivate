@@ -7,6 +7,7 @@ public class WorkspaceManager : MonoBehaviour
     public Transform workspaceContent;
     public GameObject addColumnButton;
 
+    //Method to instantiate a colum prefab 
     public void AddNewColumn()
     {
         GameObject newColumn = Instantiate(columnPrefab, workspaceContent);

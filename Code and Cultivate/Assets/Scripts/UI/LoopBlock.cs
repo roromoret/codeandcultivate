@@ -4,6 +4,8 @@ using TMPro;
 
 public class LoopBlock : ExecutableBlock
 {
+    
+    //Base loop of 3 :
     [Header("Loop Settings")]
     public int loopCount = 3; 
     public Transform innerBlocksContent;
@@ -13,6 +15,7 @@ public class LoopBlock : ExecutableBlock
 
     public override IEnumerator Execute()
     {
+        //Same outline as for generic blocks
         highlightOutline.enabled = true;
         yield return new WaitForSeconds(executionTime);
 
@@ -36,7 +39,8 @@ public class LoopBlock : ExecutableBlock
 
         highlightOutline.enabled = false;
     }
-
+    
+    //Visual reset in case of forced stop
     public override void ResetBlock()
     {
         base.ResetBlock();

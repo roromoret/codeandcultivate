@@ -2,6 +2,8 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+//This object need a canvas group in order to be seen by the unity drag system
+
 public class DraggableBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public bool isPaletteBlock = false;

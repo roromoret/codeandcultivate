@@ -4,13 +4,18 @@ using System.Collections;
 public class WhileBlock : ConditionalBlock
 {
     public Transform innerBlocksContent;
+    //Just a security in case of infinity loop :
     public int maxIterations = 50;
 
     public override IEnumerator Execute()
     {
+        //Execution outline around the block
         highlightOutline.enabled = true;
-        yield return new WaitForSeconds(executionTime);
+        yield return new WaitForSeconds(executionTime); 
+        //May switch with an execution time depending on the real execution of the block
+        //when it will be linked to the gameplay
 
+        
         int safetyCounter = 0;
 
         while (EvaluateCondition() && safetyCounter < maxIterations)
@@ -36,6 +41,7 @@ public class WhileBlock : ConditionalBlock
         highlightOutline.enabled = false;
     }
 
+    //In case of force stop
     public override void ResetBlock()
     {
         base.ResetBlock();

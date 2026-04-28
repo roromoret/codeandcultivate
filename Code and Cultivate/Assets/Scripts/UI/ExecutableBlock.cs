@@ -23,15 +23,19 @@ public class ExecutableBlock : MonoBehaviour
         highlightOutline.effectColor = highlightColor;
         highlightOutline.enabled = false;
     }
-
+    
+    
     public virtual IEnumerator Execute()
     {
         highlightOutline.enabled = true;
 
+        //We will need to add the actions here to link between the game and the code
         yield return new WaitForSeconds(executionTime);
         
         highlightOutline.enabled = false;
     }
+    
+    //just reset in case of hard stop
     public virtual void ResetBlock()
     {
         if (highlightOutline != null)

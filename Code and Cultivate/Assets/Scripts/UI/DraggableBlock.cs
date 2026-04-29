@@ -55,7 +55,23 @@ public class DraggableBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
         placeholder.transform.SetSiblingIndex(this.transform.GetSiblingIndex());
 
-        this.transform.SetParent(this.transform.root, true);
+        // --- LA SÉCURITÉ BLINDÉE EST ICI ---
+        Canvas mainCanvas = GetComponentInParent<Canvas>();
+        if (mainCanvas != null)
+        {
+            // 1. On force l'attachement au Canvas RACINE (ignore les sous-canvas)
+            this.transform.SetParent(mainCanvas.rootCanvas.transform, true);
+            this.transform.SetAsLastSibling();
+            
+            // 2. On empêche le bloc de devenir microscopique
+            this.transform.localScale = Vector3.one;
+            
+            // 3. On remet le Z à zéro pour éviter qu'il parte derrière la caméra
+            Vector3 safePos = this.transform.localPosition;
+            safePos.z = 0f;
+            this.transform.localPosition = safePos;
+        }
+        // -----------------------------------
 
         canvasGroup.blocksRaycasts = false;
         canvasGroup.alpha = 0.8f;

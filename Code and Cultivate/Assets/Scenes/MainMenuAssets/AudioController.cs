@@ -4,45 +4,45 @@ using UnityEngine.UI;
 
 public class AudioController : MonoBehaviour
 {
+    public static AudioController Instance;
     public AudioMixer myMixer;
-  
-    
 
-  public void SetMusicVolume(float sliderValue)
-{
-    // If the slider is exactly at 0 itll kill the sound
-    if (sliderValue == 0) 
-    {
-        myMixer.SetFloat("Music", -80f);
-    }
-    else
-    {
-  
-        float volume = Mathf.Log10(Mathf.Max(sliderValue, 0.0001f)) * 20;
-        myMixer.SetFloat("Music", volume);
-    }
-}
+   
+    public Slider musicSlider;
+    public Slider sfxSlider;
 
-    public void SetSFXVolume(float sliderValue)
+    void Awake()
     {
-     
-        if (sliderValue <= 0.0001f) 
+        if (Instance == null)
         {
-            myMixer.SetFloat("SFX", -80f);
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            float volume = Mathf.Log10(sliderValue) * 20;
-            myMixer.SetFloat("SFX", volume);
+            Destroy(gameObject);
         }
     }
-    public Slider musicSlider; 
-void Start()
-{
-  
-    musicSlider.value = 0.5f; 
-    
-   
-    SetMusicVolume(0.5f);
-}
+
+    void Start()
+    {
+        
+        if (musicSlider != null) musicSlider.value = 0.5f;
+        if (sfxSlider != null) sfxSlider.value = 0.5f;
+
+        SetMusicVolume(0.5f);
+        SetSFXVolume(0.5f);
+    }
+
+    public void SetMusicVolume(float sliderValue)
+    {
+        float volume = (sliderValue <= 0.0001f) ? -80f : Mathf.Log10(sliderValue) * 20;
+        myMixer.SetFloat("Music", volume);
+    }
+
+    public void SetSFXVolume(float sliderValue)
+    {
+        float volume = (sliderValue <= 0.0001f) ? -80f : Mathf.Log10(sliderValue) * 20;
+        myMixer.SetFloat("SFX", volume);
+    }
 }

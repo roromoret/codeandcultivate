@@ -69,7 +69,7 @@ public class ResourceHUD : MonoBehaviour
     private void UpdateLabel(ResourceDisplay display, int amount)
     {
         string name = ResourceManager.Instance.GetDisplayName(display.type);
-        display.label.text = $"{name}: {amount}";
+        display.label.text = $"{amount}";
     }
 
     private void ApplyIcon(ResourceDisplay display)

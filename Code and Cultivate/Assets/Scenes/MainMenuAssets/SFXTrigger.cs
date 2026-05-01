@@ -1,17 +1,25 @@
 using UnityEngine;
-using UnityEngine.InputSystem;//Mock Code just to check out the sound.
+using UnityEngine.InputSystem;
 
 public class SFXTrigger : MonoBehaviour
 {
     public AudioSource sfxSource;
+    public GameObject SoundPanel; 
 
     void Update()
     {
-        
         if (Mouse.current != null && Mouse.current.rightButton.wasPressedThisFrame)
         {
             sfxSource.Play();
-            Debug.Log("Right click detected with New Input System!");
+        }
+
+        if (Keyboard.current != null && Keyboard.current.jKey.wasPressedThisFrame)
+        {
+            if (SoundPanel != null)
+            {
+                bool isActive = SoundPanel.activeSelf;
+                SoundPanel.SetActive(!isActive);
+            }
         }
     }
 }

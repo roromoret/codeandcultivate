@@ -13,9 +13,11 @@ public class TutorialPopup : MonoBehaviour
 
     [Header("Animation")]
     [SerializeField] private float slideDuration = 0.35f;
+    [SerializeField] private int   slideDistance = 600; // how far to slide in pixels
 
     private TutorialData    _data;
     private RectTransform   _rect;
+    private Vector2         _onScreenPos;
 
     // Setup
     public void Show(TutorialData data)
@@ -27,6 +29,8 @@ public class TutorialPopup : MonoBehaviour
         bodyLabel.text  = data.body;
 
         okButton.onClick.AddListener(OnOKPressed);
+
+        _onScreenPos = _rect.anchoredPosition;
 
         StartCoroutine(SlideIn());
     }
@@ -43,17 +47,15 @@ public class TutorialPopup : MonoBehaviour
     {
         // Start offscreen to the right
         Vector2 offScreen = new Vector2(Screen.width, 0f);
-        Vector2 onScreen  = GetOnScreenPosition();
 
-        yield return Slide(offScreen, onScreen);
+        yield return Slide(offScreen, _onScreenPos);
     }
 
     private IEnumerator SlideOut()
     {
         Vector2 offScreen = new Vector2(Screen.width, 0f);
-        Vector2 onScreen  = GetOnScreenPosition();
 
-        yield return Slide(onScreen, offScreen);
+        yield return Slide(_onScreenPos, offScreen);
 
         Destroy(gameObject);
     }
@@ -71,14 +73,5 @@ public class TutorialPopup : MonoBehaviour
         }
 
         _rect.anchoredPosition = to;
-    }
-
-    // Private helper for animation
-    private Vector2 GetOnScreenPosition()
-    {
-        // Positions the panel so its right edge touches the right edge of the screen
-        float canvasHalfWidth = Screen.width / 2f;
-        float panelHalfWidth  = _rect.rect.width / 2f;
-        return new Vector2(canvasHalfWidth - panelHalfWidth, 0f);
     }
 }

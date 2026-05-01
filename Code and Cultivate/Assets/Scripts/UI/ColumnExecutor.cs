@@ -31,14 +31,22 @@ public class ColumnExecutor : MonoBehaviour
 
     private IEnumerator ExecuteBlocksSequence()
     {
+        Debug.Log($"[ColumnExecutor] Starting execution. Block count: {blocksContent.childCount}");
+
         for (int i = 0; i < blocksContent.childCount; i++)
         {
             Transform child = blocksContent.GetChild(i);
             ExecutableBlock block = child.GetComponent<ExecutableBlock>();
+            Debug.Log($"[ColumnExecutor] Component type: {block.GetType().Name}");
+
+            Debug.Log($"[ColumnExecutor] Child {i}: {child.name}, block found: {block != null}");
             
             if (block != null)
             {
+                Debug.Log($"[ColumnExecutor] Component type: {block.GetType().Name}");
+                Debug.Log($"[ColumnExecutor] About to call Execute() on {child.name}");
                 yield return StartCoroutine(block.Execute());
+                Debug.Log($"[ColumnExecutor] Execute() finished on {child.name}");
             }
         }
     }

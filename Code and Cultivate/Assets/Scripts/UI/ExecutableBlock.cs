@@ -4,6 +4,15 @@ using System.Collections;
 
 public class ExecutableBlock : MonoBehaviour
 {
+    // giving the blocks access to the farmer
+    public static IFarmerActions Farmer { get; private set; }
+    public static void RegisterFarmer(IFarmerActions farmer)
+    {   
+        Debug.Log("[ExecutableBlock] RegisterFarmer called.");  // TEMP
+        Farmer = farmer;
+        Debug.Log("[ExecutableBlock] Farmer registered");
+    }
+
     protected Outline highlightOutline;
     
     public Color highlightColor = Color.yellow;
@@ -28,11 +37,14 @@ public class ExecutableBlock : MonoBehaviour
     public virtual IEnumerator Execute()
     {
         highlightOutline.enabled = true;
-
-        //We will need to add the actions here to link between the game and the code
         yield return new WaitForSeconds(executionTime);
-        
         highlightOutline.enabled = false;
+    }
+
+    protected IEnumerator WaitForFarmer()
+    {
+        if (Farmer == null) yield break;
+        yield return new WaitUntil(() => !Farmer.IsBusy);
     }
     
     //just reset in case of hard stop

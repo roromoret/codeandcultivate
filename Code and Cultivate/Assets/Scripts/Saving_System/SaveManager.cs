@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class SaveManager : MonoBehaviour
 {
@@ -22,6 +23,24 @@ public class SaveManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         _savePath = Path.Combine(Application.persistentDataPath, SAVE_FILENAME);
         Debug.Log($"[SaveManager] Save path: {_savePath}");
+        
+        // Listen for scene loads to apply pending save data
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Try to apply any pending save data when a new scene loads
+        if (HasPendingLoadData())
+        {
+            Debug.Log("[SaveManager] Scene loaded, applying saved data...");
+            ApplyLoadedData();
+        }
     }
 
 

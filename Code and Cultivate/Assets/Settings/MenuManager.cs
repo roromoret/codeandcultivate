@@ -37,6 +37,11 @@ public class MenuManager : MonoBehaviour
         }
         
         Debug.Log("[MenuManager] Loading saved game");
+        
+        // Load save data into memory BEFORE switching scenes
+        // SaveManager will apply it when FarmScene finishes loading
+        SaveManager.Instance.Load();
+        
         SceneManager.LoadScene("FarmScene"); 
     }
     

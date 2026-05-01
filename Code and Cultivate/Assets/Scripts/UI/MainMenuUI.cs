@@ -11,6 +11,19 @@ public class MainMenuUI : MonoBehaviour
     
     private void Start()
     {
+        // Auto-find buttons if not assigned in Inspector
+        if (newGameButton == null) newGameButton = FindButton("NewGameButton");
+        if (loadGameButton == null) loadGameButton = FindButton("LoadGameButton");
+        if (quitButton == null) quitButton = FindButton("QuitButton");
+        if (saveInfoText == null) saveInfoText = FindObjectOfType<TextMeshProUGUI>();
+        
+        // Check for null references
+        if (newGameButton == null || loadGameButton == null || quitButton == null || saveInfoText == null)
+        {
+            Debug.LogError("[MainMenuUI] UI fields not found! Please assign them in Inspector or name buttons correctly.");
+            return;
+        }
+        
         // Subscribe to button clicks
         newGameButton.onClick.AddListener(OnNewGameClicked);
         loadGameButton.onClick.AddListener(OnLoadGameClicked);
@@ -20,8 +33,22 @@ public class MainMenuUI : MonoBehaviour
         UpdateSaveStatus();
     }
     
+    private Button FindButton(string buttonName)
+    {
+        GameObject btnObj = GameObject.Find(buttonName);
+        return btnObj != null ? btnObj.GetComponent<Button>() : null;
+    }
+    
     private void UpdateSaveStatus()
     {
+        if (SaveManager.Instance == null)
+        {
+            Debug.LogWarning("[MainMenuUI] SaveManager not ready yet");
+            saveInfoText.text = "Checking save...";
+            saveInfoText.color = Color.yellow;
+        return;
+        }
+   
         if (SaveManager.Instance.SaveExists())
         {
             loadGameButton.interactable = true;

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement; 
 
 public class MenuManager : MonoBehaviour
 {
@@ -7,12 +8,15 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {
-        // When the game starts, makes sure the settings is off.
         settingsUI.SetActive(false);
         mainMenuUI.SetActive(true);
     }
 
     
+    public void GoToFarm()
+    {
+        SceneManager.LoadScene("FarmScene"); 
+    }
 
     public void OpenSettings()
     {
@@ -24,5 +28,9 @@ public class MenuManager : MonoBehaviour
     {
         settingsUI.SetActive(false);
         mainMenuUI.SetActive(true);
+    }
+   public void QuitGame()
+    {
+        Application.Quit();
     }
 }

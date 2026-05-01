@@ -7,9 +7,13 @@ public class AudioController : MonoBehaviour
     public static AudioController Instance;
     public AudioMixer myMixer;
 
-   
     public Slider musicSlider;
     public Slider sfxSlider;
+
+    
+    private bool isMuted = false;
+    private float preMuteMusicVolume;
+    private float preMuteSFXVolume;
 
     void Awake()
     {
@@ -26,23 +30,53 @@ public class AudioController : MonoBehaviour
 
     void Start()
     {
+        // Set default start values
+        musicSlider.value = 0.5f;
+        sfxSlider.value = 0.5f;
         
-        if (musicSlider != null) musicSlider.value = 0.5f;
-        if (sfxSlider != null) sfxSlider.value = 0.5f;
-
         SetMusicVolume(0.5f);
         SetSFXVolume(0.5f);
     }
 
     public void SetMusicVolume(float sliderValue)
     {
-        float volume = (sliderValue <= 0.0001f) ? -80f : Mathf.Log10(sliderValue) * 20;
-        myMixer.SetFloat("Music", volume);
+       
+        if (!isMuted)
+        {
+            float volume = (sliderValue <= 0.0001f) ? -80f : Mathf.Log10(sliderValue) * 20;
+            myMixer.SetFloat("Music", volume);
+        }
     }
 
     public void SetSFXVolume(float sliderValue)
     {
-        float volume = (sliderValue <= 0.0001f) ? -80f : Mathf.Log10(sliderValue) * 20;
-        myMixer.SetFloat("SFX", volume);
+        if (!isMuted)
+        {
+            float volume = (sliderValue <= 0.0001f) ? -80f : Mathf.Log10(sliderValue) * 20;
+            myMixer.SetFloat("SFX", volume);
+        }
+    }
+
+    
+    public void ToggleMute()
+    {
+        isMuted = !isMuted;
+
+        if (isMuted)
+        {
+           
+            preMuteMusicVolume = musicSlider.value;
+            preMuteSFXVolume = sfxSlider.value;
+
+            
+            myMixer.SetFloat("Music", -80f);
+            myMixer.SetFloat("SFX", -80f);
+        }
+        else
+        {
+          
+            SetMusicVolume(preMuteMusicVolume);
+            SetSFXVolume(preMuteSFXVolume);
+        }
     }
 }

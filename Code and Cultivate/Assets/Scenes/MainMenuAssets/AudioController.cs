@@ -4,45 +4,79 @@ using UnityEngine.UI;
 
 public class AudioController : MonoBehaviour
 {
+    public static AudioController Instance;
     public AudioMixer myMixer;
-  
-    
 
-  public void SetMusicVolume(float sliderValue)
-{
-    // If the slider is exactly at 0 itll kill the sound
-    if (sliderValue == 0) 
+    public Slider musicSlider;
+    public Slider sfxSlider;
+
+    
+    private bool isMuted = false;
+    private float preMuteMusicVolume;
+    private float preMuteSFXVolume;
+
+    void Awake()
     {
-        myMixer.SetFloat("Music", -80f);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
-    else
+
+    void Start()
     {
-  
-        float volume = Mathf.Log10(Mathf.Max(sliderValue, 0.0001f)) * 20;
-        myMixer.SetFloat("Music", volume);
+        // Set default start values
+        musicSlider.value = 0.5f;
+        sfxSlider.value = 0.5f;
+        
+        SetMusicVolume(0.5f);
+        SetSFXVolume(0.5f);
     }
-}
+
+    public void SetMusicVolume(float sliderValue)
+    {
+       
+        if (!isMuted)
+        {
+            float volume = (sliderValue <= 0.0001f) ? -80f : Mathf.Log10(sliderValue) * 20;
+            myMixer.SetFloat("Music", volume);
+        }
+    }
 
     public void SetSFXVolume(float sliderValue)
     {
-     
-        if (sliderValue <= 0.0001f) 
+        if (!isMuted)
         {
+            float volume = (sliderValue <= 0.0001f) ? -80f : Mathf.Log10(sliderValue) * 20;
+            myMixer.SetFloat("SFX", volume);
+        }
+    }
+
+    
+    public void ToggleMute()
+    {
+        isMuted = !isMuted;
+
+        if (isMuted)
+        {
+           
+            preMuteMusicVolume = musicSlider.value;
+            preMuteSFXVolume = sfxSlider.value;
+
+            
+            myMixer.SetFloat("Music", -80f);
             myMixer.SetFloat("SFX", -80f);
         }
         else
         {
-            float volume = Mathf.Log10(sliderValue) * 20;
-            myMixer.SetFloat("SFX", volume);
+          
+            SetMusicVolume(preMuteMusicVolume);
+            SetSFXVolume(preMuteSFXVolume);
         }
     }
-    public Slider musicSlider; 
-void Start()
-{
-  
-    musicSlider.value = 0.5f; 
-    
-   
-    SetMusicVolume(0.5f);
-}
 }

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8204f69faa87db4398f9c5bc5a3b5ed, type: 3}
+  m_Name: WorldData
+  m_EditorClassIdentifier: 
+  width: 21
+  height: 21
+  tiles:
+  - type: 0
+    prefab: {fileID: 919132149155446097, guid: b9badc6cbad186c48b43d204d2dfd981, type: 3}
+  - type: 1
+    prefab: {fileID: 919132149155446097, guid: 76f2ee3cbab61bf4289113d8ce1f5ac4, type: 3}
+  - type: 2
+    prefab: {fileID: 919132149155446097, guid: 5871cd1e32a863549bfb1c71ec9eef87, type: 3}
+  - type: 3
+    prefab: {fileID: 919132149155446097, guid: ad5fede86cc16c54d87da8c64e85078a, type: 3}
+  - type: 4
+    prefab: {fileID: 919132149155446097, guid: 5f239b092b0b7ca4aa68f56c691d131b, type: 3}

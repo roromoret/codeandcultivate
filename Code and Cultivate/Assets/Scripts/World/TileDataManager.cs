@@ -10,6 +10,9 @@ public class TileDataManager : MonoBehaviour
     public static TileDataManager Instance { get; private set; }
     private Dictionary<Vector2Int, TileData> _tiles = new();
 
+    private float _gridOffsetX;
+    private float _gridOffsetZ;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -23,26 +26,29 @@ public class TileDataManager : MonoBehaviour
 
     // INIT FROM GRID
 
-    public void InitialiseFromGrid(WorldData worldData)
+    public void InitialiseFromGrid(TileType[,] grid, int width, int height)
     {
         _tiles.Clear();
 
-        for (int row = 0; row < worldData.height; row++)
+        _gridOffsetX = -(width / 2f);
+        _gridOffsetZ = -(height / 2f);
+
+        WorldGrid.Instance.SetGridOffset(_gridOffsetX, _gridOffsetZ);
+
+        for (int row = 0; row < height; row++)
         {
-            for (int col = 0; col < worldData.width; col++)
+            for (int col = 0; col < width; col++)
             {
-                TileDefinition  tileDef = worldData.GetTile(col, row);
-                TileType        type    = tileDef != null ? tileDef.type : TileType.Normal;
-                var             coords  = new Vector2Int(col, row);
+                TileType    type    = grid[col, row];
+                var         coords  = new Vector2Int(col, row);
+                TileData    tile    = new TileData(coords, type);
 
-                _tiles[coords] = new TileData(coords, type);
-
-                if (type != TileType.Normal && type != TileType.Rock)
-                _tiles[coords].Occupant = OccupantType.Crop;
+                if (type != TileType.Normal && type != TileType.Rock) tile.Occupant = OccupantType.Crop;
+                _tiles[coords] = tile;
             }
         }
 
-        Debug.Log($"[TileDataManager] Initialised {_tiles.Count} tiles from WorldData");
+        Debug.Log($"[TileDataManager] Initialised {_tiles.Count} tiles");
     }
 
     // PUBLIC QUERY API

@@ -14,14 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 21
   height: 21
-  tiles:
-  - type: 0
-    prefab: {fileID: 919132149155446097, guid: b9badc6cbad186c48b43d204d2dfd981, type: 3}
-  - type: 1
-    prefab: {fileID: 919132149155446097, guid: 76f2ee3cbab61bf4289113d8ce1f5ac4, type: 3}
-  - type: 2
-    prefab: {fileID: 919132149155446097, guid: 5871cd1e32a863549bfb1c71ec9eef87, type: 3}
-  - type: 3
-    prefab: {fileID: 919132149155446097, guid: ad5fede86cc16c54d87da8c64e85078a, type: 3}
-  - type: 4
-    prefab: {fileID: 919132149155446097, guid: 5f239b092b0b7ca4aa68f56c691d131b, type: 3}
+  groundPrefab: {fileID: 919132149155446097, guid: b9badc6cbad186c48b43d204d2dfd981, type: 3}
+  rockPrefab: {fileID: 919132149155446097, guid: 5f239b092b0b7ca4aa68f56c691d131b, type: 3}
+  fruitPrefab: {fileID: 919132149155446097, guid: 76f2ee3cbab61bf4289113d8ce1f5ac4, type: 3}
+  vegetablePrefab: {fileID: 919132149155446097, guid: 5871cd1e32a863549bfb1c71ec9eef87, type: 3}
+  berryPrefab: {fileID: 919132149155446097, guid: ad5fede86cc16c54d87da8c64e85078a, type: 3}
+  maxRocks: 15
+  maxFruits: 8
+  maxVegetables: 8
+  maxBerries: 8

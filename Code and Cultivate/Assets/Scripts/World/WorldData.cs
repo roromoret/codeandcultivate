@@ -12,14 +12,16 @@ public class WorldData : ScriptableObject
     public int width    = 10;
     public int height   = 10;
 
-    // Flat array representing a 2D grid - index with [row * width + col]
-    // Assign in Inspector
-    public TileDefinition[] tiles;
+    [Header("Tile prefabs")]
+    public GameObject groundPrefab;
+    public GameObject rockPrefab;
+    public GameObject fruitPrefab;
+    public GameObject vegetablePrefab;
+    public GameObject berryPrefab;
 
-    public TileDefinition GetTile(int col, int row)
-    {
-        int index = row * width + col;
-        if (index < 0 || index >= tiles.Length) return null;
-        return tiles[index];
-    }
+    [Header("Max spawns per special tile type")]
+    public int maxRocks      = 5;
+    public int maxFruits = 4;
+    public int maxVegetables = 4;
+    public int maxBerries    = 4;
 }

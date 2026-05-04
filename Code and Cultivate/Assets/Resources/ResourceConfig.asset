@@ -15,17 +15,17 @@ MonoBehaviour:
   resources:
   - type: 0
     displayName: Money
-    icon: {fileID: 21300000, guid: 1c69d5f0e1760de4f90ef4d129820539, type: 3}
+    icon: {fileID: 21300000, guid: 1d18d24a2e2f390449f503c60a2debfd, type: 3}
     startingAmount: 0
   - type: 1
     displayName: Fruits
-    icon: {fileID: 21300000, guid: 974a3572dc601a6498f833f0e9126454, type: 3}
+    icon: {fileID: 21300000, guid: 6cc99ed4da5ff6d40b7717015bd11e2d, type: 3}
     startingAmount: 0
   - type: 2
     displayName: Vegetables
-    icon: {fileID: 21300000, guid: 3388412bf3697814f90b50051a7c445e, type: 3}
+    icon: {fileID: 21300000, guid: 1ae861683d08a5b4cbc3ff045a17377d, type: 3}
     startingAmount: 0
   - type: 3
     displayName: Berries
-    icon: {fileID: 21300000, guid: 47d35cc638849b6458e4058130d48811, type: 3}
+    icon: {fileID: 21300000, guid: 1eaf6d10223aeb6479159dacf8f76ea3, type: 3}
     startingAmount: 0

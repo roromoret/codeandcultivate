@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Runtime.ConstrainedExecution;
 
 // instantiates prefabs, seeds TileDataManager
 public class WorldGenerator : MonoBehaviour
@@ -138,8 +139,8 @@ public class WorldGenerator : MonoBehaviour
         float offsetX = -(gridWidth  / 2f);
         float offsetZ = -(gridHeight / 2f);
 
-        float x = col + 0.5f + offsetX;
-        float z = row + 0.5f + offsetZ;
+        float x = col + offsetX;
+        float z = row + offsetZ;
 
         return new Vector3(x, y, z);
     }
@@ -164,45 +165,4 @@ public class WorldGenerator : MonoBehaviour
         farmer.position = GetWorldPosition(centreCol, centreRow, farmer.position.y);
         Debug.Log($"[WorldGenerator] Farmer placed at centre tile ({centreCol}, {centreRow}).");
     }
-
-    /*
-    private void GenerateWorld()
-    {
-        if (worldData == null)
-        {
-            Debug.LogError("[WorldGenerator] No WorldData assigned.");
-            return;
-        }
-
-        for (int row = 0; row < worldData.height; row++)
-        {
-            for (int col = 0; col < worldData.width; col++)
-            {
-                TileDefinition  tileDef = worldData.GetTile(col, row);
-                TileType        type    = tileDef != null ? tileDef.type : TileType.Normal;
-                Vector3         basePos = WorldGrid.Instance.TileToWorld(col, row, groundSpawnHeight);
-
-                // Always spawn a ground tile first at every position
-                if (defaultGroundPrefab != null)
-                {
-                    GameObject ground = Instantiate(defaultGroundPrefab, basePos, Quaternion.identity, tileParent);
-                    ground.name = $"Tile_{col}_{row}_Ground";
-                }
-
-                // If this tile has a special prefab (crop, rock), spawn it on top
-                if (tileDef?.prefab != null && type != TileType.Normal)
-                {
-                    Vector3 cropPos = new Vector3(
-                        basePos.x, basePos.y + cropHeightOffset, basePos.z);
-
-                    GameObject special = Instantiate(tileDef.prefab, cropPos, Quaternion.identity, tileParent);
-                    special.name = $"Tile_{col}_{row}_{type}";
-                }
-            }
-        }
-
-        Debug.Log($"[WorldGenerator] World generated ({worldData.width} x {worldData.height})");
-        TileDataManager.Instance.InitialiseFromGrid(worldData);
-    }
-    */
 }

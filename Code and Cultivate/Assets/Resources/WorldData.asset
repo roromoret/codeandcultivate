@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8204f69faa87db4398f9c5bc5a3b5ed, type: 3}
   m_Name: WorldData
   m_EditorClassIdentifier: 
-  width: 21
-  height: 21
+  width: 24
+  height: 24
   groundPrefab: {fileID: 919132149155446097, guid: b9badc6cbad186c48b43d204d2dfd981, type: 3}
   rockPrefab: {fileID: 919132149155446097, guid: 5f239b092b0b7ca4aa68f56c691d131b, type: 3}
   fruitPrefab: {fileID: 919132149155446097, guid: 76f2ee3cbab61bf4289113d8ce1f5ac4, type: 3}

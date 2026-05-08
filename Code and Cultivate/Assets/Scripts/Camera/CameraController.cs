@@ -9,15 +9,18 @@ public class CameraController : MonoBehaviour
     public float fastMoveMultiplier = 2f; // Multiplier for fast movement when holding down a key - Right now I have it binded as Left Shift
 
     [Header("Zoom")]    // Uses FOV
-    public float minZoom = 20f; // 10 FOV minum zoom
-    public float maxZoom = 70f; // 60 FOV maximum zoom
+    public float minZoom = 10f;
+    public float maxZoom = 40f;
+    public float zoomIncrement = 5f;
 
     [Header("Smoothing")]
-    public float moveSmoothTime = 0.1f;
-    public float zoomSmoothTime = 0.1f;
+    public float moveSmoothTime = 0.4f;
+    public float zoomSmoothTime = 0.4f;
 
     private Vector3 _targetPosition;
     private Vector3 _moveVelocity;
+    private float _targetFOV;
+    private float _zoomVelocity;
 
     private Camera _cam;
 
@@ -29,6 +32,7 @@ public class CameraController : MonoBehaviour
         _targetPosition = transform.position;
 
         _cam.fieldOfView = SnapToStep(Mathf.Clamp(_cam.fieldOfView, minZoom, maxZoom));
+        _targetFOV = _cam.fieldOfView;
     }
 
     // Update is called once per frame
@@ -67,23 +71,28 @@ public class CameraController : MonoBehaviour
         );
     }
 
-    void Zoom() // Zoom is handled using mouse scroll wheel
+    void Zoom()
     {
         var mouse = Mouse.current;
         if (mouse == null) return;
 
         float scroll = mouse.scroll.ReadValue().y;
-        if (scroll == 0f) return;
+        if (scroll != 0f)
+        {  
+            _targetFOV += scroll > 0f ? -zoomIncrement : zoomIncrement;
+            _targetFOV = SnapToStep(Mathf.Clamp(_targetFOV, minZoom, maxZoom));
+        }
 
-        float currentFOV = _cam.fieldOfView;
-        float newFOV = scroll > 0f ? currentFOV - 10f : currentFOV + 10f;
-
-        newFOV = SnapToStep(Mathf.Clamp(newFOV, minZoom, maxZoom));
-        _cam.fieldOfView = newFOV;
+        _cam.fieldOfView = Mathf.SmoothDamp(
+            _cam.fieldOfView,
+            _targetFOV,
+            ref _zoomVelocity,
+            zoomSmoothTime
+        );
     }
 
     float SnapToStep(float value)
     {
-        return Mathf.Round(value / 10f) * 10f;
+        return Mathf.Round(value / zoomIncrement) * zoomIncrement;
     }
 }

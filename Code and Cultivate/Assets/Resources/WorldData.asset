@@ -19,7 +19,7 @@ MonoBehaviour:
   fruitPrefab: {fileID: 6741457653329740451, guid: 201f91c4c9b6a804dacb6fc5b6e44b47, type: 3}
   vegetablePrefab: {fileID: 381744238861713221, guid: e1364301d53182344ab5311bd5f10d4f, type: 3}
   berryPrefab: {fileID: 8785584085019613884, guid: 31e7346343b3ac94d9f8b5f84015338a, type: 3}
-  maxRocks: 40
+  maxRocks: 35
   maxFruits: 15
   maxVegetables: 15
   maxBerries: 15

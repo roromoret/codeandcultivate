@@ -11,6 +11,9 @@ public class CodingUIController : MonoBehaviour
     public string showText = "Show Code";
     public string hideText = "Hide Code";
 
+    public GameObject previousButton;
+    public GameObject nextButton;
+
     void Start()
     {
         SetUIVisibility(false);
@@ -32,5 +35,8 @@ public class CodingUIController : MonoBehaviour
         }
 
         if (buttonText != null) { buttonText.text = show ? hideText : showText; }
+
+        if (previousButton != null) previousButton.SetActive(show);
+        if (nextButton != null) nextButton.SetActive(show);
     }
 }

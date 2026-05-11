@@ -1724,6 +1724,8 @@ MonoBehaviour:
   buttonText: {fileID: 7921885148409808488}
   showText: Show Code
   hideText: Hide Code
+  previousButton: {fileID: 3467238987709499088}
+  nextButton: {fileID: 328330440494652279}
 --- !u!1 &8770392417237180198
 GameObject:
   m_ObjectHideFlags: 0

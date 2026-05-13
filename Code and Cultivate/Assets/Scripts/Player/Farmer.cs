@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Transactions;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class Farmer : MonoBehaviour, IFarmerActions
 {
@@ -159,37 +157,42 @@ public class Farmer : MonoBehaviour, IFarmerActions
     {
         IsBusy = true;
         
-        Vector2Int currentTile = WorldGrid.Instance.WorldToTile(transform.position);
+        Vector2Int currentTile  = WorldGrid.Instance.WorldToTile(transform.position);
+        CropData   cropData     = CropManager.Instance.GetCropData(currentTile);
+
         Debug.Log($"[Farmer] Attempting to harvest at tile {currentTile}");
 
         // Get tile data
         if (!TileDataManager.Instance.TryGetTile(currentTile, out TileData tile))
         {
-            Debug.Log($"[Farmer] Plant failed - no tile data found at {currentTile}");
+            Debug.Log($"[Farmer] Harvest failed - no tile data found at {currentTile}");
             IsBusy = false;
             yield break;
         }
 
-        Debug.Log($"[Farmer] Tile type at {currentTile}: {tile.Type}");
-
-        // Resolve which resource this tile type maps to
-        ResourceType? resource = TileTypeToResource(tile.Type);
-
-        // Break if not a resource tile
-        if (resource == null)
+        if (tile.Occupant != OccupantType.Crop)
         {
-            Debug.Log($"Harvest failed - tile type {tile.Type} is not a crop tile");
+            Debug.Log($"[Farmer] Harvest failed - {currentTile} is not a crop tile");
             IsBusy = false;
             yield break;
         }
 
+        if (cropData == null)
+        {
+            Debug.Log($"[Farmer] Harvest failed - CropManager has no data at {currentTile}");
+            IsBusy = false;
+            yield break;
+        }
+
+        if (!cropData.IsMature)
+        Debug.Log($"[Farmer] Harvesting immature crop at {currentTile} - no yield expected");
+        
         yield return new WaitForSeconds(0.5f); // placeholder animation time
+        
+        int yield = CropManager.Instance.Harvest(currentTile);
+        ResourceType? resource = TileTypeToResource(cropData.CropType);
 
-        ResourceManager.Instance.Add(resource.Value, 3);
-
-            // TODO: update tile state and world visuals once world is instantiated at runtime
-            // e.g. TileDataManager.Instance.SetCrop(currentTile, newCropData, tile.Type);
-            // and spawn/update the crop model on Tilemap_Crops
+        if (resource.HasValue && yield > 0) ResourceManager.Instance.Add(resource.Value, yield);
 
         IsBusy = false;
     }

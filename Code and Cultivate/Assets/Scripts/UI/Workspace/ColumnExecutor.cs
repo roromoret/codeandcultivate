@@ -49,5 +49,7 @@ public class ColumnExecutor : MonoBehaviour
                 Debug.Log($"[ColumnExecutor] Execute() finished on {child.name}");
             }
         }
+
+        TurnManager.Instance.PassTurn();
     }
 }

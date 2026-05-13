@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Runtime.ConstrainedExecution;
+using Mono.Cecil;
 
 // instantiates prefabs, seeds TileDataManager
 public class WorldGenerator : MonoBehaviour
@@ -114,6 +115,14 @@ public class WorldGenerator : MonoBehaviour
                     Vector3 specialPos = new Vector3(basePos.x, basePos.y + cropHeightOffset, basePos.z);
                     GameObject special = Instantiate(specialPrefab, specialPos, Quaternion.identity, tileParent);
                     special.name = $"Tile_{col}_{row}_{type}";
+
+                    // register crop with CropManager if this is a crop tile
+                    if (type != TileType.Rock)
+                    {
+                        CropVisual visual = special.GetComponent<CropVisual>();
+                        if (visual != null) CropManager.Instance.RegisterCrop(new Vector2Int(col, row), type, visual);
+                        else Debug.LogWarning($"[WorldGenerator] No CropVisual on {special.name} - add CropVisual component to the prefab");
+                    }
                 }
             }
         }

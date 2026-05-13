@@ -5,17 +5,15 @@ using UnityEngine.Tilemaps;
 
 public class Farmer : MonoBehaviour, IFarmerActions
 {
-
-
     public static Farmer Instance { get; private set; }
+    public static event System.Action<Vector2Int> OnTileChanged;
 
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 8f; // units per second during tween
 
-    // IFarmerActions.IsBusy — block executor must check this before issuing the next command
     public bool IsBusy { get; private set; }
     
-    // Initilization of the singleton in Awake to ensure it happens before any Start methods try to access it
+    // Init the singleton in Awake to ensure it happens before any Start methods try to access it
     private void Awake()
 {
     if (Instance != null && Instance != this)
@@ -94,6 +92,8 @@ public class Farmer : MonoBehaviour, IFarmerActions
         // Notify tile manager when the farmer moves
         Vector2Int currentTile = WorldGrid.Instance.WorldToTile(transform.position);
         TileDataManager.Instance.SetFarmerPosition(previousTile, currentTile);
+        Debug.Log($"[Farmer] In MoveRoutine - OnTileChanged firing for tile {currentTile}");
+        OnTileChanged?.Invoke(currentTile);
 
         yield return new WaitForSeconds(0.2f);
         IsBusy = false;
@@ -116,7 +116,7 @@ public class Farmer : MonoBehaviour, IFarmerActions
 
         Debug.Log($"[Farmer] Tile type at {currentTile}: {tile.Type}");
 
-        // null fix - idfk why i need to do this. i hope this gets easier when the world is instantiated
+        // null fix. i hope i dont need this when the world is instantiated
         ResourceType? nullableResource = TileTypeToResource(tile.Type);
         if (!nullableResource.HasValue)
         {

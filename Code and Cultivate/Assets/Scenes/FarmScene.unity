@@ -1480,6 +1480,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 060efeb90766896478ea309a15e1a69f, type: 2}
   - {fileID: 11400000, guid: 3aa0c523678bb2745bc96c44792f2a8c, type: 2}
   - {fileID: 11400000, guid: aecc3a0dddd98f749a147d04c931a01a, type: 2}
+  - {fileID: 11400000, guid: 3c6e892583f1fb041b533f26a846d8ad, type: 2}
   popupPrefab: {fileID: 6813395965406820633, guid: 8570993cb0397404cbda5bb7345291d4, type: 3}
   uiParent: {fileID: 987842281}
 --- !u!224 &57569034

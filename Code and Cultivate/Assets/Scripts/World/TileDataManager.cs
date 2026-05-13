@@ -1,9 +1,5 @@
 using System.Collections.Generic;
-using System.Net;
-using TMPro.EditorUtilities;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.Rendering.UI;
 
 public class TileDataManager : MonoBehaviour
 {

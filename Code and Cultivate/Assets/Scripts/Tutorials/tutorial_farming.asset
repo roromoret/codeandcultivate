@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b8f35a36a7a689408842e0fe6ebc89f, type: 3}
+  m_Name: tutorial_farming
+  m_EditorClassIdentifier: 
+  id: tutorial_farming
+  title: Farming
+  body: 'It appears you have navigated the farmer to a crop tile, here''s how farming
+    works:
+
+
+    - Crops have multiple growth stages.
+
+    - Every turn, all crops
+    advance by 1 stage.
+
+    - Use the Harvest block in your code runner while on
+    top of a crop to harvest it.
+
+    - Harvesting a crop that isn''t at its final
+    growth stage will yield significantly less.
+
+    - When a crop is harvested,
+    the tile will turn back into a Normal tile.
+
+
+    DEV NOTE: Plant is broken n
+    ow, since you can''t call it on a Normal tile. Fix soon'
+  trigger: 2
+  thresholdResource: 0
+  thresholdAmount: 0

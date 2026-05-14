@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b8f35a36a7a689408842e0fe6ebc89f, type: 3}
+  m_Name: tutorial_movement
+  m_EditorClassIdentifier: 
+  id: tutorial_movement
+  title: Moving Around
+  body: 'The farmer moves one tile at a time across the farm grid.
+
+
+    To get him
+    to move, open the coding panel and drag a Move block into a new column. Use the
+    dropdown to choose a cardinal direction, then hit Run to watch him move. You
+    can chain multiple blocks together or use loops to get the farmer to walk further.
+
+
+    Try
+    moving the farmer on top of a Crop tile, then I''ll tell you all about farming.'
+  trigger: 0
+  thresholdResource: 0
+  thresholdAmount: 0

@@ -207,3 +207,15 @@ MonoBehaviour:
   youngSprite: {fileID: 21300000, guid: 29380724112228e4299c254e3359b963, type: 3}
   matureSprite: {fileID: 21300000, guid: 00904bc359a76ec4ea84150d22faf574, type: 3}
   defaultSprite: {fileID: 21300000, guid: 00904bc359a76ec4ea84150d22faf574, type: 3}
+  stageLabel: {fileID: 8100902801562490516}
+--- !u!114 &8100902801562490516 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5451190424031721239, guid: 37f350e1df14f9043ad6506c8b3c52e6, type: 3}
+  m_PrefabInstance: {fileID: 4308454878108361091}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

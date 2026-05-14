@@ -4,14 +4,14 @@ using System.Collections;
 
 public class ColumnPaginator : MonoBehaviour
 {
-    [Header("Réglages")]
+    [Header("Settings")]
     public RectTransform contentRect;
     public int maxVisibleColumns = 2;
     public float columnWidth = 300f;
     public float spacing = 20f;
     public float smoothTime = 0.2f;
 
-    [Header("Boutons")]
+    [Header("Buttons")]
     public Button previousButton;
     public Button nextButton;
 

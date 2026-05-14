@@ -20,7 +20,7 @@ public class IfElseBlock : ConditionalBlock
             ExecutableBlock childBlock = targetContent.GetChild(j).GetComponent<ExecutableBlock>();
             if (childBlock != null)
             {
-                yield return StartCoroutine(childBlock.Execute());
+                yield return StartCoroutine(childBlock.TriggerExecute());
             }
         }
 

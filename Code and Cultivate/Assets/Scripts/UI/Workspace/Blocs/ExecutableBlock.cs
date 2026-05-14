@@ -4,14 +4,13 @@ using System.Collections;
 
 public class ExecutableBlock : MonoBehaviour
 {
-    // giving the blocks access to the farmer
     public static IFarmerActions Farmer { get; private set; }
     public static void RegisterFarmer(IFarmerActions farmer)
     {   
-        Debug.Log("[ExecutableBlock] RegisterFarmer called.");  // TEMP
         Farmer = farmer;
-        Debug.Log("[ExecutableBlock] Farmer registered");
     }
+
+    public bool countAsInstruction = true;
 
     protected Outline highlightOutline;
     
@@ -20,6 +19,9 @@ public class ExecutableBlock : MonoBehaviour
     [Range(1f, 10f)]
     public float outlineThickness = 4f;
 
+    private ColumnExecutor cachedExecutor;
+
+    //Setup add the addtition of a block
     void Awake()
     {
         highlightOutline = GetComponent<Outline>();
@@ -31,14 +33,32 @@ public class ExecutableBlock : MonoBehaviour
         
         highlightOutline.effectColor = highlightColor;
         highlightOutline.enabled = false;
+
+        cachedExecutor = GetComponentInParent<ColumnExecutor>();
     }
     
-    
+    // Same Trigger for every block, get called from loops also (usefull for the ticks)
+    public IEnumerator TriggerExecute()
+    {
+        if (cachedExecutor == null) 
+        { 
+            cachedExecutor = GetComponentInParent<ColumnExecutor>(); 
+        }
+
+        if (cachedExecutor != null && countAsInstruction)
+        {
+            cachedExecutor.AddTick();
+        }
+
+        yield return StartCoroutine(Execute());
+    }
+
+    //Where we do the real code execution
     public virtual IEnumerator Execute()
     {
-        highlightOutline.enabled = true;
-        yield return new WaitForSeconds(executionTime);
-        highlightOutline.enabled = false;
+        if (highlightOutline != null) highlightOutline.enabled = true;
+        yield return new WaitForSeconds(executionTime); //Temporary while there are no real actions
+        if (highlightOutline != null) highlightOutline.enabled = false;
     }
 
     protected IEnumerator WaitForFarmer()
@@ -47,7 +67,6 @@ public class ExecutableBlock : MonoBehaviour
         yield return new WaitUntil(() => !Farmer.IsBusy);
     }
     
-    //just reset in case of hard stop
     public virtual void ResetBlock()
     {
         if (highlightOutline != null)

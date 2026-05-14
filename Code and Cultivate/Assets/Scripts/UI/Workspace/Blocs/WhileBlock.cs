@@ -25,7 +25,7 @@ public class WhileBlock : ConditionalBlock
                 ExecutableBlock childBlock = innerBlocksContent.GetChild(j).GetComponent<ExecutableBlock>();
                 if (childBlock != null)
                 {
-                    yield return StartCoroutine(childBlock.Execute());
+                    yield return StartCoroutine(childBlock.TriggerExecute());
                 }
             }
 

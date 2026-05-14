@@ -915,6 +915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 690d600052cb4c5f82b0275b4b9da380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countAsInstruction: 1
   highlightColor: {r: 1, g: 0.5580963, b: 0.01886791, a: 1}
   executionTime: 0.5
   outlineThickness: 6
@@ -933,6 +934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6a33f9a9d2d4d0999bcd12d88370e23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countAsInstruction: 0
   highlightColor: {r: 0.8347876, g: 0.015686274, b: 1, a: 1}
   executionTime: 0.5
   outlineThickness: 6

@@ -1,27 +1,70 @@
 ﻿using UnityEngine;
+using TMPro;
 using System.Collections;
-
-//Just call all the coroutine for each interface executableBlock of the column
 
 public class ColumnExecutor : MonoBehaviour
 {
     public Transform blocksContent; 
+    public TextMeshProUGUI blockCountText;
+    public TextMeshProUGUI tickCountText;
+
+    private int currentTicks = 0;
 
     public void StartExecution()
     {
         StopAllCoroutines(); 
         
+        CalculateTotalBlocks();
+        currentTicks = 0;
+        UpdateTickUI();
+
         ResetAllBlocks();
 
         StartCoroutine(ExecuteBlocksSequence());
     }
+
+    private void CalculateTotalBlocks()
+    {
+        if (blocksContent == null) return;
+
+        ExecutableBlock[] allBlocks = blocksContent.GetComponentsInChildren<ExecutableBlock>(false);
+        int validBlocksCount = 0;
+
+        foreach (ExecutableBlock block in allBlocks)
+        {
+            if (block.countAsInstruction)
+            {
+                validBlocksCount++;
+            }
+        }
+        
+        if (blockCountText != null)
+        {
+            blockCountText.text = "Executing " + validBlocksCount.ToString() + " blocks";
+        }
+    }
+
+    public void AddTick()
+    {
+        currentTicks++;
+        UpdateTickUI();
+    }
+
+    private void UpdateTickUI()
+    {
+        if (tickCountText != null)
+        {
+            tickCountText.text = "In " + currentTicks.ToString() + " ticks";
+        }
+    }
     
-    //Reset function in case the player run the column before it was finished
+    
+    //Get called if the player Run the scipt while it's not finished, so the run start again from the begining
     private void ResetAllBlocks()
     {
-        for (int i = 0; i < blocksContent.childCount; i++)
+        ExecutableBlock[] allBlocks = blocksContent.GetComponentsInChildren<ExecutableBlock>(true);
+        foreach (ExecutableBlock block in allBlocks)
         {
-            ExecutableBlock block = blocksContent.GetChild(i).GetComponent<ExecutableBlock>();
             if (block != null)
             {
                 block.ResetBlock();
@@ -31,22 +74,14 @@ public class ColumnExecutor : MonoBehaviour
 
     private IEnumerator ExecuteBlocksSequence()
     {
-        Debug.Log($"[ColumnExecutor] Starting execution. Block count: {blocksContent.childCount}");
-
         for (int i = 0; i < blocksContent.childCount; i++)
         {
             Transform child = blocksContent.GetChild(i);
             ExecutableBlock block = child.GetComponent<ExecutableBlock>();
-            Debug.Log($"[ColumnExecutor] Component type: {block.GetType().Name}");
-
-            Debug.Log($"[ColumnExecutor] Child {i}: {child.name}, block found: {block != null}");
             
-            if (block != null)
+            if (block != null && block.gameObject.activeSelf)
             {
-                Debug.Log($"[ColumnExecutor] Component type: {block.GetType().Name}");
-                Debug.Log($"[ColumnExecutor] About to call Execute() on {child.name}");
-                yield return StartCoroutine(block.Execute());
-                Debug.Log($"[ColumnExecutor] Execute() finished on {child.name}");
+                yield return StartCoroutine(block.TriggerExecute());
             }
         }
     }

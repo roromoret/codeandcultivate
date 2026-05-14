@@ -32,7 +32,7 @@ public class LoopBlock : ExecutableBlock
                 
                 if (childBlock != null)
                 {
-                    yield return StartCoroutine(childBlock.Execute());
+                    yield return StartCoroutine(childBlock.TriggerExecute());
                 }
             }
         }

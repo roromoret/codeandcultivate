@@ -14,13 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: tutorial_gamestart
   title: Welcome to Code and Cultivate!
-  body: 'There''s nothing here yet, just enjoy this alpha build.
+  body: 'In a world run by code, it''s your job to help the farmer cultivate a humble
+    farm into a crop kingdom.
 
 
-    WASD = Move
-    camera around
+    - Use WASD to move the camera around.
 
-    Scroll wheel = Zoom camera'
+    -
+    Use the scroll wheel to zoom the camera in and out.
+
+    - Press "Show Code"
+    on the bottom left to see the Coding Panel.
+
+
+    Now that you know the basic
+    controls, press OK to continue.'
   trigger: 0
   thresholdResource: 0
   thresholdAmount: 0

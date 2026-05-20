@@ -19,7 +19,7 @@ public class TurnManager : MonoBehaviour
     public void PassTurn()
     {
         turnCount++;
-        Debug.Log($"[TurnManagher] Passed turn: currently turn {turnCount}");
+        Debug.Log($"[TurnManager] Passed turn: currently turn {turnCount}");
         OnTurnPassed?.Invoke(turnCount);
     }
 }

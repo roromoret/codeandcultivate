@@ -17,7 +17,7 @@ public class DraggableBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     private GameObject placeholder = null;
     private CanvasGroup canvasGroup;
-    
+        
     private Transform originalParent;
     private bool wasCloned = false;
 

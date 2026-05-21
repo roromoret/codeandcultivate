@@ -14,6 +14,8 @@ public class ColumnExecutor : MonoBehaviour
     {
         StopAllCoroutines(); 
         
+        FunctionRegistry.currentCallDepth = 0;
+        
         CalculateTotalBlocks();
         currentTicks = 0;
         UpdateTickUI();
@@ -40,7 +42,7 @@ public class ColumnExecutor : MonoBehaviour
         
         if (blockCountText != null)
         {
-            blockCountText.text = "Executing " + validBlocksCount.ToString() + " blocks";
+            blockCountText.text = "Blocks: " + validBlocksCount.ToString();
         }
     }
 
@@ -54,12 +56,10 @@ public class ColumnExecutor : MonoBehaviour
     {
         if (tickCountText != null)
         {
-            tickCountText.text = "In " + currentTicks.ToString() + " ticks";
+            tickCountText.text = "Ticks: " + currentTicks.ToString();
         }
     }
     
-    
-    //Get called if the player Run the scipt while it's not finished, so the run start again from the begining
     private void ResetAllBlocks()
     {
         ExecutableBlock[] allBlocks = blocksContent.GetComponentsInChildren<ExecutableBlock>(true);
@@ -74,6 +74,22 @@ public class ColumnExecutor : MonoBehaviour
 
     private IEnumerator ExecuteBlocksSequence()
     {
+        for (int i = 0; i < blocksContent.childCount; i++)
+        {
+            Transform child = blocksContent.GetChild(i);
+            ExecutableBlock block = child.GetComponent<ExecutableBlock>();
+            
+            if (block != null && block.gameObject.activeSelf)
+            {
+                yield return StartCoroutine(block.TriggerExecute());
+            }
+        }
+    }
+
+    public IEnumerator ExecuteSequenceOnly()
+    {
+        ResetAllBlocks();
+        
         for (int i = 0; i < blocksContent.childCount; i++)
         {
             Transform child = blocksContent.GetChild(i);

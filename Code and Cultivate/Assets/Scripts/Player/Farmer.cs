@@ -6,6 +6,11 @@ public class Farmer : MonoBehaviour, IFarmerActions
     public static Farmer Instance { get; private set; }
     public static event System.Action<Vector2Int> OnTileChanged;
 
+    // Visual fields added for handling the 2D character sheets and flip container
+    [Header("Visuals")]
+    [SerializeField] private Animator farmerAnimator;
+    [SerializeField] private Transform visualContainer;
+
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 8f; // units per second during tween
 
@@ -13,19 +18,16 @@ public class Farmer : MonoBehaviour, IFarmerActions
     
     // Init the singleton in Awake to ensure it happens before any Start methods try to access it
     private void Awake()
-{
-    if (Instance != null && Instance != this)
     {
-        Destroy(gameObject);
-        return;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        
+        Instance = this;
     }
     
-    Instance = this;
-}
-
-
-
-
 
     // 
     // IFarmerActions Implementation
@@ -65,12 +67,16 @@ public class Farmer : MonoBehaviour, IFarmerActions
             return;
         }
 
-        StartCoroutine(MoveRoutine(targetWorld));
+        // Pass the heading direction to the movement coroutine to drive animations
+        StartCoroutine(MoveRoutine(targetWorld, direction));
     }
 
-    private IEnumerator MoveRoutine(Vector3 target)
+    private IEnumerator MoveRoutine(Vector3 target, Vector3 direction)
     {
         IsBusy = true;
+
+        // Start walking animation right before moving
+        UpdateAnimator(direction, true);
 
         Vector2Int previousTile = WorldGrid.Instance.WorldToTile(transform.position);
         Vector3 start = transform.position;
@@ -87,6 +93,9 @@ public class Farmer : MonoBehaviour, IFarmerActions
 
         transform.position = target;
 
+        // Switch back to idle state once the tile destination is reached
+        UpdateAnimator(Vector3.zero, false);
+
         // Notify tile manager when the farmer moves
         Vector2Int currentTile = WorldGrid.Instance.WorldToTile(transform.position);
         TileDataManager.Instance.SetFarmerPosition(previousTile, currentTile);
@@ -95,6 +104,27 @@ public class Farmer : MonoBehaviour, IFarmerActions
 
         yield return new WaitForSeconds(0.2f);
         IsBusy = false;
+    }
+
+    // Handles passing state variables to the blend trees and flips the sprite renderers
+    private void UpdateAnimator(Vector3 direction, bool isMoving)
+    {
+        if (farmerAnimator == null) return;
+
+        farmerAnimator.SetBool("IsMoving", isMoving);
+
+        if (direction != Vector3.zero)
+        {
+            // Flips the whole container along the X-axis for left/right directions
+            if (visualContainer != null)
+            {
+                if (direction.x < -0.1f) visualContainer.localScale = new Vector3(-1, 1, 1);
+                else if (direction.x > 0.1f) visualContainer.localScale = new Vector3(1, 1, 1);
+            }
+
+            farmerAnimator.SetFloat("InputX", direction.x);
+            farmerAnimator.SetFloat("InputY", direction.z); 
+        }
     }
 
     private IEnumerator PlantRoutine()

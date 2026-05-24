@@ -25,7 +25,7 @@ public class ShopSellRowUI : MonoBehaviour
         nameText.text   = displayName;
         amountText.text = $"x{amount}";
         priceText.text  = $"${entry.sellPricePerUnit} each";
-
+        if (iconImage != null && icon != null) iconImage.sprite = icon;
 
         sell1Button.  onClick.AddListener(() => ShopManager.Instance.TrySell(_entry, 1));
         sell10Button. onClick.AddListener(() => ShopManager.Instance.TrySell(_entry, 10));

@@ -26,7 +26,8 @@ MonoBehaviour:
 
     When you harvest a crop, its tile
     will revert to normal, so you''ll need to replant the crop if you want to harvest
-    multiple times.'
+    multiple times. Try harvesting 10 vegetables to unlock the ability to sell your
+    crops.'
   trigger: 2
   thresholdResource: 0
   thresholdAmount: 0

@@ -14,7 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: tutorial_shop
   title: Shop
-  body: You have 10 money now, so you unlocked the shop
+  body: 'Now that you have harvested 10 vegetables, you''ve unlocked the Shop. Press
+    the "Open Shop" button in the bottom right to access the Shop.
+
+
+    From the
+    Shop, you can sell the crops you''ve harvested for some Money, and you can also
+    buy items from the Shop using the Money you gained from selling crops.'
   trigger: 1
-  thresholdResource: 0
+  thresholdResource: 2
   thresholdAmount: 10

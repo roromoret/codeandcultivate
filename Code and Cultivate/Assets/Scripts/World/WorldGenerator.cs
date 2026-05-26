@@ -13,25 +13,37 @@ public class WorldGenerator : MonoBehaviour
     [SerializeField] private float      groundSpawnHeight   = -1f;
     [SerializeField] private float      cropHeightOffset    = 1f;
 
+    [Header("Farmers")]
+    [SerializeField] private List<GameObject>   farmerPrefab;
+
     // generated layout built procedurally then passed to TileDataManager
     private TileType[,] _grid;
+
+    // center tile coords (reused by FarmerSpawner)
+    private int _centreCol;
+    private int _centreRow;
 
     private void Awake()
     {
         GenerateLayout();
         SpawnTiles();
-        PlaceFarmer();
+        SpawnInitialFarmer();
         TileDataManager.Instance.InitialiseFromGrid(_grid, worldData.width, worldData.height);
     }
+
+    public Vector3 GetCenterWorldPosition()
+    => GetWorldPosition(_centreCol, _centreRow, 0f);
 
 
     //
     // Step 1 - Building the tile type layout
     //
-
     private void GenerateLayout()
     {
         _grid = new TileType[worldData.width, worldData.height];
+        _centreCol = worldData.width  / 2;
+        _centreRow = worldData.height / 2;
+
 
         // Initialise all tiles as normal
         for (int row = 0; row < worldData.height; row++)
@@ -46,6 +58,9 @@ public class WorldGenerator : MonoBehaviour
         PlaceSpecialTiles(available, TileType.Fruit,     worldData.maxFruits);
         PlaceSpecialTiles(available, TileType.Vegetable, worldData.maxVegetables);
         PlaceSpecialTiles(available, TileType.Berry,     worldData.maxBerries);
+
+        // ensure center tile is always walkable
+        _grid[_centreCol, _centreRow] = TileType.Normal;
     }
 
     private void PlaceSpecialTiles(List<Vector2Int> available, TileType type, int max)
@@ -91,7 +106,6 @@ public class WorldGenerator : MonoBehaviour
     // 
     // Step 2 - Spawn tile GameObjects from the layout
     //
-
     private void SpawnTiles()
     {
         for (int row = 0; row < worldData.height; row++)
@@ -141,10 +155,28 @@ public class WorldGenerator : MonoBehaviour
             _                   => null
         };
     }
+    
 
-    // shift the origin so the world is centred on (0,0) rather than building only +X and +Z
+    //
+    // Step 3 - Delegate first farmer spawn to FarmerSpawner
+    //
+    private void SpawnInitialFarmer()
+    {
+        if (FarmerSpawner.Instance == null)
+        {
+            Debug.LogError("[WorldGenerator] FarmerSpawner Instance is null - check FarmerManager in the scene and its script");
+            return;
+        }
+
+        FarmerSpawner.Instance.SpawnInitialFarmer(GetCenterWorldPosition());
+        Debug.Log($"[WorldGenerator] Center tile is ({_centreCol}, {_centreRow})");
+    }
+
+    
+    // World position helpers
     public static Vector3 GetWorldPosition(int col, int row, float y, int gridWidth, int gridHeight)
     {   
+        // shift the origin so the world is centred on (0,0) rather than building only +X and +Z
         float offsetX = -(gridWidth  / 2f);
         float offsetZ = -(gridHeight / 2f);
 
@@ -156,22 +188,4 @@ public class WorldGenerator : MonoBehaviour
 
     private Vector3 GetWorldPosition(int col, int row, float y)
     => GetWorldPosition(col, row, y, worldData.width, worldData.height);
-    
-    //
-    // Step 3 - Place farmer in the center of the world
-    //
-
-    private void PlaceFarmer()
-    {
-        if (farmer == null) return;
-
-        int centreCol = worldData.width  / 2;
-        int centreRow = worldData.height / 2;
-
-        // force center tile type to Normal so the farmer always spawns on walkable ground
-        _grid[centreCol, centreRow] = TileType.Normal;
-
-        farmer.position = GetWorldPosition(centreCol, centreRow, farmer.position.y);
-        Debug.Log($"[WorldGenerator] Farmer placed at centre tile ({centreCol}, {centreRow}).");
-    }
 }

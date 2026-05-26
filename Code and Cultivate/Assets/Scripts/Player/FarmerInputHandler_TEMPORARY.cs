@@ -1,32 +1,57 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+// TEMPORARY - broadcasts input to ALL farmers simultaneously
+// replace with proper per-farmer input routing when farmer assignment is implemented in the codeblocks
 public class FarmerInputHandler_TEMPORARY : MonoBehaviour
 {
-    private IFarmerActions _farmer;
+    private IFarmerActions[] _farmers;
 
-    void Awake()
+    private void Start()
     {
-        _farmer = GetComponent<IFarmerActions>();
+        RefreshFarmers();
     }
 
-    void Update()
+    public void RefreshFarmers() // Call this whenever a farmer is added or removed from the scene
+    {
+        _farmers = FindObjectsByType<Farmer>(FindObjectsSortMode.None);
+        Debug.Log($"[FarmerInputHandler] Tracking {_farmers.Length} farmer(s).");
+    }
+    private void Update()
     {
         InputHandler();
     }
 
-    // arrow keys to move farmer, 1 and 2 to plant and harvest
-    void InputHandler()
+    // arrow keys to move farmer, 1 and 2 to plant and harvest, T to pass turn, F spawn new farmer
+    private void InputHandler()
     {
         var keyboard = Keyboard.current;
-        if (keyboard == null) return;
+        if (keyboard == null || _farmers == null) return;
 
-        if (keyboard.upArrowKey.isPressed)      _farmer.MoveNorth();
-        if (keyboard.leftArrowKey.isPressed)    _farmer.MoveWest();
-        if (keyboard.downArrowKey.isPressed)    _farmer.MoveSouth();
-        if (keyboard.rightArrowKey.isPressed)   _farmer.MoveEast();
-        if (keyboard.digit1Key.isPressed)       _farmer.Plant();
-        if (keyboard.digit2Key.isPressed)       _farmer.Harvest();
-        if (keyboard.tKey.wasPressedThisFrame)  TurnManager.Instance.PassTurn();
+        foreach (IFarmerActions farmer in _farmers)
+        {
+            if (keyboard.upArrowKey.isPressed) farmer.MoveNorth();
+            if (keyboard.leftArrowKey.isPressed) farmer.MoveWest();
+            if (keyboard.downArrowKey.isPressed) farmer.MoveSouth();
+            if (keyboard.rightArrowKey.isPressed) farmer.MoveEast();
+            if (keyboard.digit1Key.isPressed) farmer.Plant();
+            if (keyboard.digit2Key.isPressed) farmer.Harvest();
+        }
+
+        if (keyboard.tKey.wasPressedThisFrame) TurnManager.Instance.PassTurn();
+
+        if (keyboard.fKey.wasPressedThisFrame) FarmerSpawner.Instance?.TrySpawnAdditionalFarmer(WorldGenerator_GetCenter());
+    }
+
+    // temp private helper - asks WorldGenerator for the center position rather than duplicating the calculation
+    private static Vector3 WorldGenerator_GetCenter()
+    {
+        var wg = Object.FindFirstObjectByType<WorldGenerator>();
+        if (wg == null)
+        {
+            Debug.LogError("[FarmerInputHandler] WorldGenerator not found in scene.");
+            return Vector3.zero;
+        }
+        return wg.GetCenterWorldPosition();
     }
 }

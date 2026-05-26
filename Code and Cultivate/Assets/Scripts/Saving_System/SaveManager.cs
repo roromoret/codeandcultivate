@@ -30,17 +30,14 @@ public class SaveManager : MonoBehaviour
     // Save character position and all resources to file
     public void Save()
     {
-        if (Farmer.Instance == null || ResourceManager.Instance == null)
-        {
-            Debug.LogError("[SaveManager] Cannot save - Farmer or ResourceManager not found");
-            return;
-        }
+        Farmer mainFarmer = FarmerSpawner.Instance?.Farmers.Count > 0 ?
+        FarmerSpawner.Instance.Farmers[0] : null;
         
         SaveData data = new SaveData();
         
         // Save character position
-        data.farmerPosition = new Vector3Data(Farmer.Instance.transform.position);
-        Debug.Log($"[SaveManager] Saving position: {Farmer.Instance.transform.position}");
+        data.farmerPosition = new Vector3Data(mainFarmer.transform.position);
+        Debug.Log($"[SaveManager] Saving position: {mainFarmer.transform.position}");
         
         // Save all resources
         foreach (ResourceType type in System.Enum.GetValues(typeof(ResourceType)))
@@ -87,8 +84,11 @@ public class SaveManager : MonoBehaviour
             Debug.LogWarning("[SaveManager] No loaded data to apply");
             return;
         }
+
+        Farmer mainFarmer = FarmerSpawner.Instance?.Farmers.Count > 0 ?
+        FarmerSpawner.Instance.Farmers[0] : null;
         
-        if (Farmer.Instance == null || ResourceManager.Instance == null)
+        if (mainFarmer == null || ResourceManager.Instance == null)
         {
             Debug.LogError("[SaveManager] Cannot apply data - Farmer or ResourceManager not found");
             return;
@@ -96,7 +96,7 @@ public class SaveManager : MonoBehaviour
         
         // Restore character position
         Vector3 loadedPosition = _lastLoadedData.farmerPosition.ToVector3();
-        Farmer.Instance.transform.position = loadedPosition;
+        mainFarmer.transform.position = loadedPosition;
         Debug.Log($"[SaveManager] Applied position: {loadedPosition}");
         
         // Restore resources

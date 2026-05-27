@@ -2202,7 +2202,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -61.500244, y: -20}
+  m_AnchoredPosition: {x: -61.5, y: -20}
   m_SizeDelta: {x: -21, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &249357714
@@ -15381,7 +15381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainFarmerPrefab: {fileID: 5552375308981902660, guid: 1c3c7731771500746bc24aa3b307f220, type: 3}
-  helperFarmerPrefab: {fileID: 5552375308981902660, guid: 1c3c7731771500746bc24aa3b307f220, type: 3}
+  helperFarmerPrefab: {fileID: 5552375308981902660, guid: bb5136ebfa6932b439bea9c2ba637668, type: 3}
   farmerParent: {fileID: 9381608}
 --- !u!1 &2041075325
 GameObject:

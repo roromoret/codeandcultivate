@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: ShopConfig
   m_EditorClassIdentifier: 
   buyItems:
-  - displayName: Placeholder item
+  - displayName: Farmhand
     icon: {fileID: 21300000, guid: 1d18d24a2e2f390449f503c60a2debfd, type: 3}
-    buyPrice: 50
+    buyPrice: 10
+    effect: 1
   sellItems:
   - resourceType: 1
     sellPricePerUnit: 10

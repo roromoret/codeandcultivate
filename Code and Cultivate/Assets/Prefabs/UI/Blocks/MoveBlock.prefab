@@ -946,7 +946,7 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: 80
+  m_PreferredWidth: 100
   m_PreferredHeight: 40
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
@@ -1374,6 +1374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77c8d257b66366a45a264a1fcf341ce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countAsInstruction: 1
   highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   executionTime: 0.5
   outlineThickness: 4

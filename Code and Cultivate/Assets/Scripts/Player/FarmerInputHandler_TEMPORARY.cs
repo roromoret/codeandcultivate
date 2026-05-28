@@ -25,7 +25,7 @@ public class FarmerInputHandler_TEMPORARY : MonoBehaviour
         if (keyboard.leftArrowKey.isPressed)    _farmer.MoveWest();
         if (keyboard.downArrowKey.isPressed)    _farmer.MoveSouth();
         if (keyboard.rightArrowKey.isPressed)   _farmer.MoveEast();
-        if (keyboard.digit1Key.isPressed)       _farmer.Plant();
+        if (keyboard.digit1Key.isPressed)       _farmer.Plant(0);
         if (keyboard.digit2Key.isPressed)       _farmer.Harvest();
         if (keyboard.tKey.wasPressedThisFrame)  TurnManager.Instance.PassTurn();
     }

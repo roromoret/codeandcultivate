@@ -6,7 +6,7 @@ public class TutorialConditionChecker : MonoBehaviour
 // add new condition checks as new TutorialTrigger types are introduced
 {
     [Header("Shop tutorial threshold (matches TutorialData asset setting)")]
-    [SerializeField] private int moneyThresholdForShop = 10;
+    [SerializeField] private int resourceThresholdForShop = 10;
 
     private bool _shopTutorialChecked;
     private bool _farmingTutorialChecked;
@@ -34,13 +34,13 @@ public class TutorialConditionChecker : MonoBehaviour
     {
         // Shop tutorial - fires once when money first reaches the threshold
         if (_shopTutorialChecked) return;
-        if (type != ResourceType.Money) return;
-        if (newAmount < moneyThresholdForShop) return;
+        if (type != ResourceType.Vegetables) return;
+        if (newAmount < resourceThresholdForShop) return;
 
         _shopTutorialChecked = true;
         TutorialManager.Instance.TryTrigger(
             TutorialTrigger.OnResourceThreshold,
-            ResourceType.Money,
+            ResourceType.Vegetables,
             newAmount);
     }
     

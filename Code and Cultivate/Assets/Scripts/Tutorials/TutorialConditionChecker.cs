@@ -44,9 +44,9 @@ public class TutorialConditionChecker : MonoBehaviour
             newAmount);
     }
     
-    private void WhenFarmerIsOnResourceTile(Vector2Int tile)
+    private void WhenFarmerIsOnResourceTile(Vector2Int tile, Farmer _)
     {
-        // Farming tutorial - fires once when farmer is on top of a resource tile
+        // Farming tutorial - fires once when any farmer is on top of a resource tile
         if (_farmingTutorialChecked) return;
         if (!TileDataManager.Instance.TryGetTile(tile, out TileData tileData)) return;
         if (tileData.Occupant != OccupantType.Crop) return;

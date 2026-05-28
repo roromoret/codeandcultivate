@@ -6,12 +6,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ShopConfig", menuName = "Code and Cultivate/Shop Config")]
 public class ShopConfig : ScriptableObject
 {
+    public enum BuyItemEffect
+    {
+        None,
+        SpawnFarmer
+    }
+
     [System.Serializable]
     public class BuyEntry
     {
         public string displayName;
         public Sprite icon;
         public int    buyPrice;
+        public BuyItemEffect effect = BuyItemEffect.None;
         // TODO: Add ItemType enum field and wire to inventory manager when inventory system is implemented
     }
  

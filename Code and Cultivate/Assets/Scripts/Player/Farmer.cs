@@ -1,12 +1,13 @@
 using System.Collections;
+using System.Reflection;
 using UnityEngine;
 using TMPro; // added for error text
 
 public class Farmer : MonoBehaviour, IFarmerActions
 {
-    // Note for later: If you add multiple farmers, this Singleton (Instance) pattern will need to be removed or refactored!
-    public static Farmer Instance { get; private set; }
-    public static event System.Action<Vector2Int> OnTileChanged;
+    public static event System.Action<Vector2Int, Farmer> OnTileChanged;
+    public string FarmerName { get; set; } = "Farmer"; // label shown on logs
+    public bool IsBusy { get; private set; }
 
     // Visual fields added for handling the 2D character sheets and flip container
     [Header("Visuals")]
@@ -33,19 +34,8 @@ public class Farmer : MonoBehaviour, IFarmerActions
     // Automatically found in Awake, no longer in the inspector
     private Transform cropsContainer; 
 
-    public bool IsBusy { get; private set; }
-    
-    // Init the singleton in Awake to ensure it happens before any Start methods try to access it
     private void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        
-        Instance = this;
-        
         // Auto-find the UI text in the scene if it hasn't been assigned
         if (errorTextUI == null)
         {
@@ -57,7 +47,7 @@ public class Farmer : MonoBehaviour, IFarmerActions
             }
             else
             {
-                Debug.LogWarning("[Farmer] Could not find 'ErrorText' in the scene! Make sure it is active and spelled correctly.");
+                Debug.LogWarning($"[{FarmerName}] Could not find 'ErrorText' in the scene! Make sure it is active and spelled correctly.");
             }
         }
         
@@ -72,8 +62,14 @@ public class Farmer : MonoBehaviour, IFarmerActions
         }
         else
         {
-            Debug.LogWarning("[Farmer] Could not find 'TileParent' in the scene! New crops will be spawned at the root of the hierarchy.");
+            Debug.LogWarning($"[{FarmerName}] Could not find 'TileParent' in the scene! New crops will be spawned at the root of the hierarchy.");
         }
+    }
+
+    private void Start()
+    {
+        if (WorldGrid.Instance != null) transform.position = WorldGrid.Instance.SnapToGrid(transform.position);
+        // WorldGenerator sets position first, then this corrects subunit drift
     }
 
     // IFarmerActions Implementation
@@ -127,14 +123,14 @@ public class Farmer : MonoBehaviour, IFarmerActions
     {
         if (IsBusy) return;
 
-        Vector3 targetWorld    = WorldGrid.Instance.SnapToGrid(transform.position + direction);
-        Vector2Int targetTile  = WorldGrid.Instance.WorldToTile(targetWorld);
-        
-        Debug.Log($"[Farmer] Attempting to move to tile {targetTile}");
+        Vector3      targetWorld = WorldGrid.Instance.SnapToGrid(transform.position + direction);
+        Vector2Int   targetTile  = WorldGrid.Instance.WorldToTile(targetWorld);
+
+        Debug.Log($"[{FarmerName}] Attempting to move to tile {targetTile}");
 
         if (!TileDataManager.Instance.IsWalkable(targetTile)) 
         {   
-            Debug.Log($"[Farmer] Tile {targetTile} is not walkable - move blocked");
+            Debug.Log($"[{FarmerName}] Tile {targetTile} is not walkable - move blocked");
             // trigger stun instead of just returning silently
             StartCoroutine(TriggerStun("Path Blocked!"));
             return;
@@ -151,11 +147,10 @@ public class Farmer : MonoBehaviour, IFarmerActions
         // Start walking animation right before moving
         UpdateAnimator(direction, true);
 
-        Vector2Int previousTile = WorldGrid.Instance.WorldToTile(transform.position);
-        Vector3 start = transform.position;
-        float   dist  = Vector3.Distance(start, target);
-        float   duration = dist / moveSpeed;
-        float   elapsed  = 0f;
+        Vector2Int  previousTile    = WorldGrid.Instance.WorldToTile(transform.position);
+        Vector3     start           = transform.position;
+        float       duration        = Vector3.Distance(start, target) / moveSpeed;
+        float       elapsed         = 0f;
 
         while (elapsed < duration)
         {
@@ -172,10 +167,10 @@ public class Farmer : MonoBehaviour, IFarmerActions
         // Notify tile manager when the farmer moves
         Vector2Int currentTile = WorldGrid.Instance.WorldToTile(transform.position);
         TileDataManager.Instance.SetFarmerPosition(previousTile, currentTile);
-        Debug.Log($"[Farmer] In MoveRoutine - OnTileChanged firing for tile {currentTile}");
-        OnTileChanged?.Invoke(currentTile);
+        Debug.Log($"[{FarmerName}] OnTileChanged firing for tile {currentTile}");
+        OnTileChanged?.Invoke(currentTile, this);
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.2f);  // wait time until next action
         IsBusy = false;
     }
 
@@ -203,19 +198,19 @@ public class Farmer : MonoBehaviour, IFarmerActions
     private IEnumerator PlantRoutine(int cropIndex)
     {
         IsBusy = true;
-        
+
         Vector2Int currentTile = WorldGrid.Instance.WorldToTile(transform.position);
-        Debug.Log($"[Farmer] Attempting to plant at tile {currentTile}");
+        Debug.Log($"[{FarmerName}] Attempting to plant at tile {currentTile}");
 
         // Get tile data
         if (!TileDataManager.Instance.TryGetTile(currentTile, out TileData tile))
         {
-            Debug.Log($"[Farmer] Plant failed - no tile data found at {currentTile}");
+            Debug.Log($"[{FarmerName}] Plant failed - no tile data found at {currentTile}");
             yield return StartCoroutine(TriggerStun("Cannot plant here!"));
             yield break;
         }
 
-        Debug.Log($"[Farmer] Tile type at {currentTile}: {tile.Type}");
+        Debug.Log($"[{FarmerName}] Tile type at {currentTile}: {tile.Type}");
 
         // map the dropdown index to the correct resource type and prefab
         // assuming based on UI prefab: 0 = Carrots, 1 = Apple, 2 = Berry
@@ -239,7 +234,7 @@ public class Farmer : MonoBehaviour, IFarmerActions
         // Check player can afford to plant
         if (!ResourceManager.Instance.CanAfford(targetResource, seedCost))
         {
-            Debug.Log($"[Farmer] Plant failed - insufficient {targetResource}");
+            Debug.Log($"[{FarmerName}] Plant failed - insufficient {targetResource}");
             yield return StartCoroutine(TriggerStun($"Not enough {targetResource}!"));
             yield break;
         }
@@ -250,7 +245,7 @@ public class Farmer : MonoBehaviour, IFarmerActions
 
         if (spent)
         {
-            Debug.Log($"[Farmer] Planted at {currentTile} - spent {seedCost} {targetResource}. " +
+            Debug.Log($"[{FarmerName}] Planted at {currentTile} - spent {seedCost} {targetResource}. " +
                     $"Remaining: {ResourceManager.Instance.Get(targetResource)}");
 
             // instantiate the correct crop visual model on the tile
@@ -270,7 +265,7 @@ public class Farmer : MonoBehaviour, IFarmerActions
         }
         else 
         {
-            Debug.Log($"[Farmer] Plant failed - Spend returned false for {targetResource}");
+            Debug.Log($"[{FarmerName}] Plant failed - Spend returned false for {targetResource}");
             yield return StartCoroutine(TriggerStun("Failed to use seeds!"));
             yield break;
         }
@@ -281,52 +276,53 @@ public class Farmer : MonoBehaviour, IFarmerActions
     private IEnumerator HarvestRoutine()
     {
         IsBusy = true;
-        
+
         Vector2Int currentTile  = WorldGrid.Instance.WorldToTile(transform.position);
         CropData   cropData     = CropManager.Instance.GetCropData(currentTile);
 
-        Debug.Log($"[Farmer] Attempting to harvest at tile {currentTile}");
+        Debug.Log($"[{FarmerName}] Attempting to harvest at tile {currentTile}");
 
         // Get tile data
         if (!TileDataManager.Instance.TryGetTile(currentTile, out TileData tile))
         {
-            Debug.Log($"[Farmer] Harvest failed - no tile data found at {currentTile}");
+            Debug.Log($"[{FarmerName}] Harvest failed - no tile data found at {currentTile}");
             yield return StartCoroutine(TriggerStun("Nothing here!"));
             yield break;
         }
 
         if (tile.Occupant != OccupantType.Crop)
         {
-            Debug.Log($"[Farmer] Harvest failed - {currentTile} is not a crop tile");
+            Debug.Log($"[{FarmerName}] Harvest failed - {currentTile} is not a crop tile");
             yield return StartCoroutine(TriggerStun("Not a crop tile!"));
             yield break;
         }
 
         if (cropData == null)
         {
-            Debug.Log($"[Farmer] Harvest failed - CropManager has no data at {currentTile}");
+            Debug.Log($"[{FarmerName}] Harvest failed - CropManager has no data at {currentTile}");
             yield return StartCoroutine(TriggerStun("Error reading crop!"));
             yield break;
         }
 
         if (!cropData.IsMature)
         {
-            Debug.Log($"[Farmer] Harvesting immature crop at {currentTile} - no yield expected");
+            Debug.Log($"[{FarmerName}] Harvesting immature crop at {currentTile} - no yield expected");
             yield return StartCoroutine(TriggerStun("Crop is not ready!"));
             yield break;
         }
         
         yield return new WaitForSeconds(0.5f); // placeholder animation time
         
-        int yield_amount = CropManager.Instance.Harvest(currentTile);
+        int harvestYield = CropManager.Instance.Harvest(currentTile);
         ResourceType? resource = TileTypeToResource(cropData.CropType);
 
-        if (resource.HasValue && yield_amount > 0) ResourceManager.Instance.Add(resource.Value, yield_amount);
+        if (resource.HasValue && harvestYield > 0) 
+            ResourceManager.Instance.Add(resource.Value, harvestYield);
 
         IsBusy = false;
     }
 
-    // Private helper - Maps TileType to corresponding ResourceType - returns null if normal or rock
+    // Maps TileType to corresponding ResourceType - returns null for Normal and Rock
     private ResourceType? TileTypeToResource(TileType tileType)
     {
         return tileType switch
@@ -336,13 +332,5 @@ public class Farmer : MonoBehaviour, IFarmerActions
             TileType.Berry      => ResourceType.Berries,
             _                   => null
         };
-    }
-
-    // Init
-    void Start()
-    {
-        // Snap to grid immediately on spawn (handles any imprecise placement)
-        if (WorldGrid.Instance != null)
-            transform.position = WorldGrid.Instance.SnapToGrid(transform.position);
     }
 }

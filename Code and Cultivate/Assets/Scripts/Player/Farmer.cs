@@ -4,6 +4,7 @@ using TMPro; // added for error text
 
 public class Farmer : MonoBehaviour, IFarmerActions
 {
+    // Note for later: If you add multiple farmers, this Singleton (Instance) pattern will need to be removed or refactored!
     public static Farmer Instance { get; private set; }
     public static event System.Action<Vector2Int> OnTileChanged;
 
@@ -17,13 +18,20 @@ public class Farmer : MonoBehaviour, IFarmerActions
 
     // newly added error feedback settings
     [Header("Error Feedback")]
-    [SerializeField] private TextMeshProUGUI errorTextUI;
+    [SerializeField] private TMP_Text errorTextUI; // changed to TMP_Text to support 3D floating text inside the prefab
     [SerializeField] private AudioSource errorAudioSource;
     [SerializeField] private float stunDuration = 2f;
 
     // newly added farming settings
     [Header("Farming")]
     [SerializeField] private int seedCost = 1;
+    [SerializeField] private float cropSpawnHeight = 0f; // Set this to match WorldGenerator's (groundSpawnHeight + cropHeightOffset)
+    [SerializeField] private GameObject carrotPrefab; // index 0
+    [SerializeField] private GameObject applePrefab;  // index 1
+    [SerializeField] private GameObject berryPrefab;  // index 2
+    
+    // Automatically found in Awake, no longer in the inspector
+    private Transform cropsContainer; 
 
     public bool IsBusy { get; private set; }
     
@@ -37,16 +45,37 @@ public class Farmer : MonoBehaviour, IFarmerActions
         }
         
         Instance = this;
-    }
-    
-
-    // 
+        
+        // Auto-find the UI text in the scene if it hasn't been assigned
+        if (errorTextUI == null)
+        {
+            // IMPORTANT: The GameObject must be named exactly "ErrorText" and be ACTIVE in the scene
+            GameObject textObj = GameObject.Find("ErrorText");
+            if (textObj != null)
+            {
+                errorTextUI = textObj.GetComponent<TMP_Text>();
+            }
+            else
+            {
+                Debug.LogWarning("[Farmer] Could not find 'ErrorText' in the scene! Make sure it is active and spelled correctly.");
+            }
+        }
         
         // hide the error text by default on awake
         if (errorTextUI != null) errorTextUI.gameObject.SetActive(false);
+
+        // Auto-find the TileParent in the scene to keep hierarchy clean when spawning crops
+        GameObject parentObj = GameObject.Find("TileParent");
+        if (parentObj != null)
+        {
+            cropsContainer = parentObj.transform;
+        }
+        else
+        {
+            Debug.LogWarning("[Farmer] Could not find 'TileParent' in the scene! New crops will be spawned at the root of the hierarchy.");
+        }
     }
 
-    
     // IFarmerActions Implementation
     public void MoveNorth() => TryMove(Vector3.forward);
     public void MoveSouth() => TryMove(Vector3.back);
@@ -65,7 +94,6 @@ public class Farmer : MonoBehaviour, IFarmerActions
         StartCoroutine(HarvestRoutine());
     }
 
-    
     // Error feedback routine (Stun)
     private IEnumerator TriggerStun(string errorMessage)
     {
@@ -172,7 +200,6 @@ public class Farmer : MonoBehaviour, IFarmerActions
         }
     }
 
-    private IEnumerator PlantRoutine()
     private IEnumerator PlantRoutine(int cropIndex)
     {
         IsBusy = true;
@@ -190,11 +217,24 @@ public class Farmer : MonoBehaviour, IFarmerActions
 
         Debug.Log($"[Farmer] Tile type at {currentTile}: {tile.Type}");
 
-        // map the dropdown index to the correct resource type
-        // assuming based on prefab: 0 = Carrots, 1 = Apple, 2 = Berry
-        ResourceType targetResource = ResourceType.Vegetables; 
-        if (cropIndex == 1) targetResource = ResourceType.Fruits;
-        else if (cropIndex == 2) targetResource = ResourceType.Berries;
+        // map the dropdown index to the correct resource type and prefab
+        // assuming based on UI prefab: 0 = Carrots, 1 = Apple, 2 = Berry
+        ResourceType targetResource = ResourceType.Vegetables;
+        TileType cropTileType = TileType.Vegetable;
+        GameObject prefabToSpawn = carrotPrefab;
+
+        if (cropIndex == 1) 
+        {
+            targetResource = ResourceType.Fruits;
+            cropTileType = TileType.Fruit;
+            prefabToSpawn = applePrefab;
+        }
+        else if (cropIndex == 2) 
+        {
+            targetResource = ResourceType.Berries;
+            cropTileType = TileType.Berry;
+            prefabToSpawn = berryPrefab;
+        }
 
         // Check player can afford to plant
         if (!ResourceManager.Instance.CanAfford(targetResource, seedCost))
@@ -213,9 +253,20 @@ public class Farmer : MonoBehaviour, IFarmerActions
             Debug.Log($"[Farmer] Planted at {currentTile} - spent {seedCost} {targetResource}. " +
                     $"Remaining: {ResourceManager.Instance.Get(targetResource)}");
 
-            // TODO: update tile state and world visuals once world is instantiated at runtime
-            // e.g. TileDataManager.Instance.SetCrop(currentTile, newCropData, tile.Type);
-            // and spawn/update the crop model on Tilemap_Crops
+            // instantiate the correct crop visual model on the tile
+            CropVisual spawnedVisual = null;
+            if (prefabToSpawn != null)
+            {
+                // Rely on WorldGrid to get the exact tile center and apply our custom spawn height
+                Vector3 spawnPosition = WorldGrid.Instance.TileToWorld(currentTile.x, currentTile.y, cropSpawnHeight);
+                
+                // Spawn the crop AND set its parent to keep the hierarchy clean
+                GameObject newObj = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity, cropsContainer);
+                spawnedVisual = newObj.GetComponent<CropVisual>();
+            }
+
+            // Register it with the system (this will also update the sprite based on growth stage)
+            CropManager.Instance.RegisterCrop(currentTile, cropTileType, spawnedVisual);
         }
         else 
         {

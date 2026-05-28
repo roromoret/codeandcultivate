@@ -378,7 +378,7 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: 125
+  m_PreferredWidth: 110
   m_PreferredHeight: 40
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
@@ -1248,6 +1248,14 @@ PrefabInstance:
     - target: {fileID: 7912858207612841351, guid: e03286bc44c20244d9bd7606cab43034, type: 3}
       propertyPath: m_text
       value: Plant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7912858207612841351, guid: e03286bc44c20244d9bd7606cab43034, type: 3}
+      propertyPath: m_fontSize
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7912858207612841351, guid: e03286bc44c20244d9bd7606cab43034, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8750610747293686539, guid: e03286bc44c20244d9bd7606cab43034, type: 3}
       propertyPath: m_Pivot.x

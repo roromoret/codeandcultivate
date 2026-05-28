@@ -74,6 +74,8 @@ public class ColumnExecutor : MonoBehaviour
 
     private IEnumerator ExecuteBlocksSequence()
     {
+        SetFarmerForExecution(); // <-- apply farmer assignment
+        
         for (int i = 0; i < blocksContent.childCount; i++)
         {
             Transform child = blocksContent.GetChild(i);
@@ -89,6 +91,7 @@ public class ColumnExecutor : MonoBehaviour
     public IEnumerator ExecuteSequenceOnly()
     {
         ResetAllBlocks();
+        SetFarmerForExecution(); // <-- apply farmer assignment
         
         for (int i = 0; i < blocksContent.childCount; i++)
         {
@@ -100,5 +103,15 @@ public class ColumnExecutor : MonoBehaviour
                 yield return StartCoroutine(block.TriggerExecute());
             }
         }
+    }
+
+    private void SetFarmerForExecution()
+    {
+        Farmer assigned = FarmerAssignment.Instance != null ?
+        FarmerAssignment.Instance.GetAssigned(this) : null;
+
+        ExecutableBlock.RegisterFarmer(assigned);
+
+        if (assigned == null) Debug.LogWarning($"[ColumnExecutor] '{gameObject.name}' has no farmer assigned - blocks will no op");
     }
 }

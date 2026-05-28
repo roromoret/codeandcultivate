@@ -1260,6 +1260,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Move
       objectReference: {fileID: 0}
+    - target: {fileID: 7912858207612841351, guid: e03286bc44c20244d9bd7606cab43034, type: 3}
+      propertyPath: m_fontSize
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7912858207612841351, guid: e03286bc44c20244d9bd7606cab43034, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 8750610747293686539, guid: e03286bc44c20244d9bd7606cab43034, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

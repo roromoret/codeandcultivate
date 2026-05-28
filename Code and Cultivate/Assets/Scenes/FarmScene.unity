@@ -398,6 +398,30 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1682999720753333409, guid: f80e6f4006e504d44add8240b7bdc1cd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682999720753333409, guid: f80e6f4006e504d44add8240b7bdc1cd, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682999720753333409, guid: f80e6f4006e504d44add8240b7bdc1cd, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682999720753333409, guid: f80e6f4006e504d44add8240b7bdc1cd, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682999720753333409, guid: f80e6f4006e504d44add8240b7bdc1cd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682999720753333409, guid: f80e6f4006e504d44add8240b7bdc1cd, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1850341456049886979, guid: f80e6f4006e504d44add8240b7bdc1cd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -8838,9 +8862,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worldData: {fileID: 11400000, guid: 1e1d034425d5cc849b0a78e1fba37554, type: 2}
   tileParent: {fileID: 1111772454}
-  farmer: {fileID: 0}
+  farmer: {fileID: 4435872427798922292, guid: 1c3c7731771500746bc24aa3b307f220, type: 3}
   groundSpawnHeight: 0
   cropHeightOffset: 0.96
+  farmerSpawnHeight: 0.96
   farmerPrefab: []
 --- !u!1 &1137701517
 GameObject:
@@ -15338,7 +15363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainFarmerPrefab: {fileID: 5552375308981902660, guid: 1c3c7731771500746bc24aa3b307f220, type: 3}
-  helperFarmerPrefab: {fileID: 5552375308981902660, guid: bb5136ebfa6932b439bea9c2ba637668, type: 3}
+  helperFarmerPrefab: {fileID: 5552375308981902660, guid: 1ef4346d4e982804aacfb908870066a7, type: 3}
   farmerParent: {fileID: 9381608}
 --- !u!114 &1992094910
 MonoBehaviour:

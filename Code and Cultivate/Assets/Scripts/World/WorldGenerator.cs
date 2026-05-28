@@ -12,6 +12,9 @@ public class WorldGenerator : MonoBehaviour
 
     [SerializeField] private float      groundSpawnHeight   = -1f;
     [SerializeField] private float      cropHeightOffset    = 1f;
+    
+    // NEW : Added a specific height for farmer spawning to avoid underground spawns
+    [SerializeField] private float      farmerSpawnHeight   = 0.96f; 
 
     [Header("Farmers")]
     [SerializeField] private List<GameObject>   farmerPrefab;
@@ -31,8 +34,9 @@ public class WorldGenerator : MonoBehaviour
         TileDataManager.Instance.InitialiseFromGrid(_grid, worldData.width, worldData.height);
     }
 
+    // UPDATED : Now uses farmerSpawnHeight instead of a hardcoded 0f
     public Vector3 GetCenterWorldPosition()
-    => GetWorldPosition(_centreCol, _centreRow, 0f);
+    => GetWorldPosition(_centreCol, _centreRow, farmerSpawnHeight);
 
 
     //

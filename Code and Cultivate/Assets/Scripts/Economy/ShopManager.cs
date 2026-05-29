@@ -1,6 +1,4 @@
 using System;
-using Mono.Cecil;
-using NUnit.Framework;
 using UnityEngine;
 
 public class ShopManager : MonoBehaviour

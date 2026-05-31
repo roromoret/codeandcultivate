@@ -34,8 +34,6 @@ public class CameraController : MonoBehaviour
 
 
     // Unity cycle
-    void OnEnable() => FarmerSelectable.OnFarmerClicked += HandleFarmerClicked;
-    void OnDisable() => FarmerSelectable.OnFarmerClicked -= HandleFarmerClicked;
 
     void Start()
     {
@@ -50,10 +48,11 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
+        HandleClickSelection();
+        
         if (_followTarget != null) TrackFollowTarget();
         else Movement();
 
-        CheckForDeselect();
         Zoom();
     }
 
@@ -70,6 +69,11 @@ public class CameraController : MonoBehaviour
         SetFollowLabel(_followTargetName);
 
         if (target == null) _targetPosition = transform.position;
+
+        Debug.Log(target != null
+            ? $"[CameraController] Now following '{_followTargetName}'"
+            : "[CameraController] Returned to freecam");
+
     }
 
 
@@ -129,25 +133,31 @@ public class CameraController : MonoBehaviour
         return Mathf.Round(value / zoomIncrement) * zoomIncrement;
     }
 
-    private void HandleFarmerClicked(FarmerSelectable farmer)
-    {
-        Farmer farmerComponent = farmer.GetComponent<Farmer>();
-        string name = farmerComponent != null ? farmerComponent.FarmerName : farmer.name;
-
-        SetFollowTarget(farmer.transform, name);
-    }
-
-    private void CheckForDeselect()
+    private void HandleClickSelection()
     {
         var mouse = Mouse.current;
         if (mouse == null || !mouse.leftButton.wasPressedThisFrame) return;
-
+ 
         Ray ray = _cam.ScreenPointToRay(mouse.position.ReadValue());
+        Debug.Log($"[CameraController] Click detected - casting ray");
+ 
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            if (hit.collider.GetComponent<FarmerSelectable>() != null) return; // ignore farmer click
+            Debug.Log($"[CameraController] Raycast hit: '{hit.collider.gameObject.name}'");
+ 
+            FarmerSelectable farmer = hit.collider.GetComponentInParent<FarmerSelectable>();
+            if (farmer != null)
+            {
+                Farmer farmerComponent = farmer.GetComponent<Farmer>();
+                string name = farmerComponent != null ? farmerComponent.FarmerName : farmer.name;
+                Debug.Log($"[CameraController] Farmer found - following '{name}'");
+                SetFollowTarget(farmer.transform, name);
+                return;
+            }
+            Debug.Log("[CameraController] Hit is not a farmer - returning to freecam");
         }
-
+        else Debug.Log("[CameraController] Raycast hit nothing - returning to freecam");
+ 
         if (_followTarget != null) SetFollowTarget(null);
     }
 
@@ -156,7 +166,7 @@ public class CameraController : MonoBehaviour
         Vector3 desiredPos = new Vector3(
             _followTarget.position.x,
             transform.position.y,
-            _followTarget.position.z
+            _followTarget.position.z - 7
         );
 
         _targetPosition = desiredPos;
@@ -179,7 +189,7 @@ public class CameraController : MonoBehaviour
         }
         else
         {
-            followLabel.text = $"Following {farmerName}";
+            followLabel.text = $"Following {farmerName} - click anywhere to deselect";
             followLabel.gameObject.SetActive(true);
         }
     }

@@ -6,8 +6,5 @@ using UnityEngine;
 public class FarmerSelectable : MonoBehaviour
 {
     public static event System.Action<FarmerSelectable> OnFarmerClicked;
-
-    private void OnMouseDown() => OnFarmerClicked?.Invoke(this);
-
     public void SimulateClick() => OnFarmerClicked?.Invoke(this); // call from tests to sim a click
 }

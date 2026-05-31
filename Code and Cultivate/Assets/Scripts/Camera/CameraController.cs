@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,6 +17,10 @@ public class CameraController : MonoBehaviour
     public float moveSmoothTime = 0.4f;
     public float zoomSmoothTime = 0.4f;
 
+    [Header("Follow Mode")]
+    [SerializeField] private TMP_Text followLabel; // HUD text
+
+    // internal state
     private Vector3 _targetPosition;
     private Vector3 _moveVelocity;
     private float _targetFOV;
@@ -24,8 +28,13 @@ public class CameraController : MonoBehaviour
 
     private Camera _cam;
 
+    // null = freecam, non-null = follow-mode
+    private Transform   _followTarget;
+    private string      _followTargetName;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    // Unity cycle
+
     void Start()
     {
         _cam = GetComponent<Camera>();
@@ -33,16 +42,44 @@ public class CameraController : MonoBehaviour
 
         _cam.fieldOfView = SnapToStep(Mathf.Clamp(_cam.fieldOfView, minZoom, maxZoom));
         _targetFOV = _cam.fieldOfView;
+
+        SetFollowLabel(null);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        Movement();
+        HandleClickSelection();
+        
+        if (_followTarget != null) TrackFollowTarget();
+        else Movement();
+
         Zoom();
     }
 
-    void Movement() // WASD to move camera
+
+
+    // Public API also used by tests
+
+    public Transform FollowTarget => _followTarget;
+
+    public void SetFollowTarget(Transform target, string displayName = null)
+    {
+        _followTarget       = target;
+        _followTargetName   = target != null ? (displayName ?? target.name) : null;
+        SetFollowLabel(_followTargetName);
+
+        if (target == null) _targetPosition = transform.position;
+
+        Debug.Log(target != null
+            ? $"[CameraController] Now following '{_followTargetName}'"
+            : "[CameraController] Returned to freecam");
+
+    }
+
+
+    // private
+
+    private void Movement() // WASD to move camera
     {
         var keyboard = Keyboard.current;
         if (keyboard == null) return;
@@ -71,7 +108,7 @@ public class CameraController : MonoBehaviour
         );
     }
 
-    void Zoom()
+    private void Zoom()
     {
         var mouse = Mouse.current;
         if (mouse == null) return;
@@ -91,8 +128,70 @@ public class CameraController : MonoBehaviour
         );
     }
 
-    float SnapToStep(float value)
+    private float SnapToStep(float value)
     {
         return Mathf.Round(value / zoomIncrement) * zoomIncrement;
     }
+
+    private void HandleClickSelection()
+    {
+        var mouse = Mouse.current;
+        if (mouse == null || !mouse.leftButton.wasPressedThisFrame) return;
+ 
+        Ray ray = _cam.ScreenPointToRay(mouse.position.ReadValue());
+        Debug.Log($"[CameraController] Click detected - casting ray");
+ 
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            Debug.Log($"[CameraController] Raycast hit: '{hit.collider.gameObject.name}'");
+ 
+            FarmerSelectable farmer = hit.collider.GetComponentInParent<FarmerSelectable>();
+            if (farmer != null)
+            {
+                Farmer farmerComponent = farmer.GetComponent<Farmer>();
+                string name = farmerComponent != null ? farmerComponent.FarmerName : farmer.name;
+                Debug.Log($"[CameraController] Farmer found - following '{name}'");
+                SetFollowTarget(farmer.transform, name);
+                return;
+            }
+            Debug.Log("[CameraController] Hit is not a farmer - returning to freecam");
+        }
+        else Debug.Log("[CameraController] Raycast hit nothing - returning to freecam");
+ 
+        if (_followTarget != null) SetFollowTarget(null);
+    }
+
+    private void TrackFollowTarget()
+    {
+        Vector3 desiredPos = new Vector3(
+            _followTarget.position.x,
+            transform.position.y,
+            _followTarget.position.z - 7
+        );
+
+        _targetPosition = desiredPos;
+
+        transform.position = Vector3.SmoothDamp(
+            transform.position,
+            _targetPosition,
+            ref _moveVelocity,
+            moveSmoothTime
+        );
+    }
+
+    private void SetFollowLabel(string farmerName)
+    {
+        if (followLabel == null) return;
+ 
+        if (string.IsNullOrEmpty(farmerName))
+        {
+            followLabel.gameObject.SetActive(false);
+        }
+        else
+        {
+            followLabel.text = $"Following {farmerName} - click anywhere to deselect";
+            followLabel.gameObject.SetActive(true);
+        }
+    }
+
 }

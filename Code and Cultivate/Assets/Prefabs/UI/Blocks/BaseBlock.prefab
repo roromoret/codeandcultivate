@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Action
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4130ee488a611334382eb3e5562e1d2c, type: 2}
+  m_sharedMaterial: {fileID: 6827663880316469607, guid: 4130ee488a611334382eb3e5562e1d2c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -279,6 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a6f1983b534cf18543c2aa22e1700f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countAsInstruction: 1
   highlightColor: {r: 0.14310157, g: 0.8632076, b: 0.016286923, a: 1}
   executionTime: 0.5
   outlineThickness: 6

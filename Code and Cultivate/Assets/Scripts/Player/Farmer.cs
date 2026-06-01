@@ -186,8 +186,8 @@ public class Farmer : MonoBehaviour, IFarmerActions
             // Flips the whole container along the X-axis for left/right directions
             if (visualContainer != null)
             {
-                if (direction.x < -0.1f) visualContainer.localScale = new Vector3(-1, 1, 1);
-                else if (direction.x > 0.1f) visualContainer.localScale = new Vector3(1, 1, 1);
+                if (direction.x < -0.1f) visualContainer.localScale = new Vector3(1, 1, 1);
+                else if (direction.x > 0.1f) visualContainer.localScale = new Vector3(-1, 1, 1);
             }
 
             farmerAnimator.SetFloat("InputX", direction.x);

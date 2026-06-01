@@ -1,0 +1,3406 @@
+fileFormatVersion: 2
+guid: 3417b4b6899644341b04eb7f8c3ae98b
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: averagemale02_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 511
+        width: 35
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e33fa73785096a4a8b963c59aac92bd
+      internalID: 924771303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_1
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 511
+        width: 29
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dea87f70ff20ff4e9ea20005a0b9c0f
+      internalID: -455186588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_2
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 511
+        width: 29
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa258f3caf8177444882766fba9fd9e1
+      internalID: 1310936294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_3
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 512
+        width: 33
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d7b424732023ff4ba5fff23a1f32fd4
+      internalID: -2112423862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_4
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 512
+        width: 35
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32e2f011cb73ba84ca5e243d763cecaf
+      internalID: -380660848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_5
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 512
+        width: 35
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc4e61a78fd32d540b209b636b17f452
+      internalID: 1943382665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_6
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 512
+        width: 33
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4761a79a41cd0b4da4136476a44dad3
+      internalID: 1217804711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_7
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 512
+        width: 33
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7e57f2f29ccd0240bff555291bbf1e7
+      internalID: -941547844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_8
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 512
+        width: 29
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56051f73538296c4aa9514bf690e6c09
+      internalID: -1445926976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_9
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 514
+        width: 31
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b0257c9ffbfb5c49a028f2695c29574
+      internalID: -2054630213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_10
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 511
+        width: 28
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc8965730522f7c40ae7d0ec5b73c8ef
+      internalID: 851788212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_11
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 516
+        width: 39
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f840dc0909f0dc4f83f84dfc739afd0
+      internalID: -2125355434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_12
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 512
+        width: 37
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f4388443dd080247be9ed2b23c492a8
+      internalID: -919072642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_13
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 511
+        width: 33
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 826a309320af00348bd7022b51f3890b
+      internalID: -42330393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_14
+      rect:
+        serializedVersion: 2
+        x: 712
+        y: 512
+        width: 34
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c95d3bed9e943724d9580eae97a79449
+      internalID: -1496055851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_15
+      rect:
+        serializedVersion: 2
+        x: 764
+        y: 514
+        width: 30
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fce7cb9fb259bc344a1525bda0648cc3
+      internalID: -1558443594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_16
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 515
+        width: 30
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e693efe63c3445048978f63388cd32c0
+      internalID: -839731779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_17
+      rect:
+        serializedVersion: 2
+        x: 889
+        y: 514
+        width: 30
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 675a4861b33dca046b428fb0530e04d5
+      internalID: -2112191874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_18
+      rect:
+        serializedVersion: 2
+        x: 950
+        y: 515
+        width: 30
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba8a4668197b5b94fabdd33846fc555c
+      internalID: 429383569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_19
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 425
+        width: 23
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5f47d474a65f8a4ab5c3cfb9da317c0
+      internalID: 899169689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_20
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 428
+        width: 45
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12e26371d1878024383b9a96b8925d45
+      internalID: 990098780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_21
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 428
+        width: 44
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59ee23efc805d5341b501cfd406d16bd
+      internalID: -1851110100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_22
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 425
+        width: 25
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b347fd26959024d4792d381ae09c87a3
+      internalID: 1213469867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_23
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 425
+        width: 26
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74b3a4131d5a2944ba77737971dbafeb
+      internalID: 652524098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_24
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 425
+        width: 26
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af41eba2a33d8924cbccbea9d48c6be8
+      internalID: -1137026039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_25
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 425
+        width: 25
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad738629cf8c99943961aaaed555147b
+      internalID: 1266960156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_26
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 425
+        width: 25
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4490250009998f449b78d6abc6d03a30
+      internalID: 1624508837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_27
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 425
+        width: 34
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6107bfa795f8b0b4d8afc3d8dbebb349
+      internalID: 648519459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_28
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 425
+        width: 33
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6656c180cfd30b4ea2088a34b543c0c
+      internalID: -102779029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_29
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 425
+        width: 41
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 377176766c1b1d540969928b3691311d
+      internalID: -1349574646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_30
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 428
+        width: 27
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0a5388df6d6d2e42ad92e67188c3f6b
+      internalID: -1878411270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_31
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 425
+        width: 25
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d891d04566c7ff6419f7b4d956713c80
+      internalID: -438683121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_32
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 425
+        width: 52
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abbbdb2f3ef026b4fabc7dfecab1b159
+      internalID: 356283494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_33
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 425
+        width: 43
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf45671657cbd7c439601b1fffb44f61
+      internalID: 1730663778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_34
+      rect:
+        serializedVersion: 2
+        x: 765
+        y: 425
+        width: 25
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e752386a786d98418ca8d8dd043c0f8
+      internalID: 135454976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_35
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 427
+        width: 65
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 594f46c2f8ac4974dadd58a342627994
+      internalID: -340461045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_36
+      rect:
+        serializedVersion: 2
+        x: 888
+        y: 426
+        width: 26
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4686025a729ecfe42a46c19240efcdc2
+      internalID: -262064203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_37
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 427
+        width: 62
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8c9a17ab9f2af44db340bc3d1eaa8b3
+      internalID: -1722337032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_38
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 340
+        width: 23
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26e34d7d9b2c92d4c897038ba2b3a255
+      internalID: 810997701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_39
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 343
+        width: 45
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fc5fa6fb3c76694e87c34a186ec076c
+      internalID: 1544868523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_40
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 343
+        width: 44
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b7e7a6fdff980846a1a9dc779940f5e
+      internalID: 572355503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_41
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 340
+        width: 25
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9762353fe0ec1764fa4b5e47a1a06ac2
+      internalID: -842105702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_42
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 340
+        width: 26
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50a14969baf13d942bd24b625040ad53
+      internalID: 1076842901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_43
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 340
+        width: 25
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea81c8cbaaaed7140bbdca9bc124c791
+      internalID: 1775852752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_44
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 340
+        width: 26
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aeb363c91b5b1f242b7f38921a522ca9
+      internalID: -1125219488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_45
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 340
+        width: 25
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9ca1fabf483a7d4494af1cbadd03e43
+      internalID: -1724999341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_46
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 340
+        width: 34
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3c11ffb02e412f44bc2b107de3c4e8e
+      internalID: 1626536406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_47
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 340
+        width: 39
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53cec1155dea13146be795db0e9b3d94
+      internalID: -498999718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_48
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 340
+        width: 39
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7ca0251837ea474facbb33b341c23e6
+      internalID: 983369891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_49
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 344
+        width: 27
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ee3890d8dc3b364a9fdf4b99ee9f1d5
+      internalID: -557925378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_50
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 340
+        width: 25
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72566227d395e43428ecb3b99d4df34f
+      internalID: 303889477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_51
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 340
+        width: 51
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bfe825eefdb862469e1642cc867a505
+      internalID: 1371084473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_52
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 340
+        width: 43
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ad6fd4a7897ef6408f01b0251f8b7a2
+      internalID: 880324911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_53
+      rect:
+        serializedVersion: 2
+        x: 771
+        y: 340
+        width: 25
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2228d7ee3c887641b685f9ecb690b3b
+      internalID: -47733042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_54
+      rect:
+        serializedVersion: 2
+        x: 804
+        y: 342
+        width: 65
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c585145b6c4fe964a9691baee5245c54
+      internalID: -724247866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_55
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 341
+        width: 26
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee429f0c93fdb8f428c04da7f024b8b0
+      internalID: -1876035998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_56
+      rect:
+        serializedVersion: 2
+        x: 935
+        y: 342
+        width: 62
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91469f93b0eed0e44a9b51a7b6cca321
+      internalID: -2143978559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_57
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 256
+        width: 35
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64397de6639c44d4ba6afd8b1c2c9d62
+      internalID: -276168938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_58
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 255
+        width: 32
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c89ed927e564d04c8fd334594272abb
+      internalID: 917815158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_59
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 255
+        width: 32
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e3f0cff98fc20248a5ff439bc7e8b74
+      internalID: -1879281608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_60
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 257
+        width: 35
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a31ef35b43047146b10ca8fbd0b8f79
+      internalID: 1105551225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_61
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 257
+        width: 35
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7cbf278fef936d458eac5ade37832c6
+      internalID: -731238130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_62
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 257
+        width: 35
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 720bb3a0bddade847b9ffbac03c0c7a7
+      internalID: -1426277861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_63
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 257
+        width: 35
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddafacc82c267394b9574d386d1e1e2d
+      internalID: -453973758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_64
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 257
+        width: 31
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dfbce38803b746498f8660327dfa458
+      internalID: -847551616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_65
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 269
+        width: 31
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff64806ee9aa2ee498e8942d963ac0c8
+      internalID: -1089451159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_66
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 252
+        width: 33
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 840225ed3f982d5498e62f37887eb4bc
+      internalID: 469564950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_67
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 255
+        width: 28
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3fd2f153a1a8ce47a2a9269ab60ccda
+      internalID: -57531570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_68
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 260
+        width: 39
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 564c92c6e36839645a555a844290633a
+      internalID: -2012272230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_69
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 257
+        width: 38
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11660d47b6ab8ca43ad1fde66e28d864
+      internalID: 1475685919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_70
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 255
+        width: 28
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a0e2b3f77f627c4f9560e63ca6abfd8
+      internalID: -1727565496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_71
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 256
+        width: 34
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7225f1490d473414a871a710c1c2656e
+      internalID: -350240771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_72
+      rect:
+        serializedVersion: 2
+        x: 763
+        y: 256
+        width: 32
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d295158edc3ce704889aa29d5b574917
+      internalID: 1988737081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_73
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 258
+        width: 30
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ed99b09663531b41b83c3b5095d4286
+      internalID: 1642700988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_74
+      rect:
+        serializedVersion: 2
+        x: 888
+        y: 256
+        width: 32
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a209528a63e16f94f864e6ac541af87b
+      internalID: 570395338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_75
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 258
+        width: 30
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 570f08549ec69db45b2ec0fcff5265c0
+      internalID: 291867606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_76
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 172
+        width: 35
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a161d6be69d9b064aac430a07c96544c
+      internalID: 227557889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_77
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 172
+        width: 35
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33cd3d42f6c0bf64ab5bbd6c0a4951e1
+      internalID: -1088569446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_78
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 172
+        width: 35
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18bcd7c1ac0a1c747ba4189cb346b9c6
+      internalID: 920326407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_79
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 173
+        width: 33
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98eaf6a21ceaabd44983c4ff5c768b6e
+      internalID: 1853685813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_80
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 173
+        width: 35
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71038c3b61f0a6c4e8cfc20266c88ee5
+      internalID: -576454835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_81
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 173
+        width: 35
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08b59311ce7cac0489a808eb8450f8ab
+      internalID: -526789156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_82
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 173
+        width: 33
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5434c7fadd088e44cbc089e06fbcc5a6
+      internalID: 1938259366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_83
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 173
+        width: 33
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6027cd0d369a304db8deb5f82e670c0
+      internalID: 1895071063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_84
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 173
+        width: 29
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f8618251d2cbd64bb96f5b46e12053b
+      internalID: -917593998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_85
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 173
+        width: 31
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba54a03137252d8499a22bea8c31de7e
+      internalID: -229466631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_86
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 172
+        width: 28
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42822c4dd43fa914296bd22b72d583d8
+      internalID: 1611046220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_87
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 176
+        width: 39
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6957cb46fe8612247b3f58e8b1f9a152
+      internalID: -1545030119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_88
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 202
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21bd14bccaedbce4eb1a701072240378
+      internalID: 1517040983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_89
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 173
+        width: 35
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75ec264d0898fd44d9d3a53ae02344ae
+      internalID: 1059941828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_90
+      rect:
+        serializedVersion: 2
+        x: 706
+        y: 173
+        width: 35
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1a662634002e8a4a96f0b27f6d07c6c
+      internalID: 2115222280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_91
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 173
+        width: 33
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40c579171fdfe2b46aa4e53f32f5e774
+      internalID: -732136104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_92
+      rect:
+        serializedVersion: 2
+        x: 821
+        y: 173
+        width: 29
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fc177eb12462e44994e73729efd5e0e
+      internalID: 604081693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_93
+      rect:
+        serializedVersion: 2
+        x: 892
+        y: 173
+        width: 28
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17fbc716f534e9f4dbdbc08b8c9273c5
+      internalID: 2015738579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_94
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 173
+        width: 35
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48b25255379444540a743f49558f8623
+      internalID: 1641248810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_95
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 91
+        width: 23
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fdc7eca030b1114685c00798546f528
+      internalID: -781378117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_96
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 90
+        width: 35
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 218d09b7327cbe24bbda233968a7047c
+      internalID: 1322780976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_97
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 90
+        width: 35
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 645ad303b59b94b4dae98b6a8146f976
+      internalID: -1132621100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_98
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 91
+        width: 25
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7e7497ebb1232a4281ef8d723e54252
+      internalID: 869637177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_99
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 91
+        width: 26
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7836cd7847b620c4684c107a708c7eef
+      internalID: 2024616870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_100
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 91
+        width: 26
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9cf0baad3a04ff4ca7b90a1695e22e4
+      internalID: -1683648533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_101
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 91
+        width: 25
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5157855184249db45b5db49c1fefc1ae
+      internalID: 1772522113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_102
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 91
+        width: 24
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8380481cea4cdf6439ec6a9064614dfc
+      internalID: -1128300209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_103
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 91
+        width: 32
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaf733e28d9bbea49b00256a13439617
+      internalID: 1384456126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_104
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 91
+        width: 33
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e549675c8af299c49959ade7ca789982
+      internalID: 1241156591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_105
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 96
+        width: 34
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0564cc3303134b4498116be19e5df13
+      internalID: 1039733845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_106
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 96
+        width: 39
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96aac654b556a244eb0309b604d8fef6
+      internalID: -725304664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_107
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 96
+        width: 52
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9f58c099d4d77b4fb40fe19e443d51f
+      internalID: -409829768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_108
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 96
+        width: 39
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d581cf32cf3b36458a74b6bc374498e
+      internalID: 330533047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_109
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 143
+        width: 21
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aeb52e8a45b6cf4418360ecdbef466ea
+      internalID: -1818133288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_110
+      rect:
+        serializedVersion: 2
+        x: 727
+        y: 143
+        width: 21
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b075729806dd0634b8975a2ed1424484
+      internalID: -838991723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_111
+      rect:
+        serializedVersion: 2
+        x: 764
+        y: 91
+        width: 33
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7277530b55d730a4eab5b5dc7874c5b4
+      internalID: 456703263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_112
+      rect:
+        serializedVersion: 2
+        x: 809
+        y: 90
+        width: 49
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2297a5a133f6a24b8cb3764b61826f1
+      internalID: 1031389122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_113
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 91
+        width: 50
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48bc5b66c237b6a45a5575171bbf2633
+      internalID: -611704504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_114
+      rect:
+        serializedVersion: 2
+        x: 950
+        y: 90
+        width: 32
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07a418805a5b927448bdc69faceea8d9
+      internalID: -1661822117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_115
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 115
+        width: 20
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9236041484d6e4a44affe2bcf0d58828
+      internalID: -1978399754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_116
+      rect:
+        serializedVersion: 2
+        x: 727
+        y: 115
+        width: 21
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 420146abbce737248a8e59eb922cb413
+      internalID: 2133358806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_117
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 87
+        width: 20
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb1d59c86b72b584eac4b57574f5b808
+      internalID: -1941537512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_118
+      rect:
+        serializedVersion: 2
+        x: 727
+        y: 87
+        width: 21
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fff94fbad18077945b8be2bc7e734b6b
+      internalID: -1869295200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_119
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 6
+        width: 23
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 042dd7a46300473438928d24f640f19b
+      internalID: 1778531254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_120
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 5
+        width: 29
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c95354dd5b431584690193b21f35b432
+      internalID: -126130170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_121
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 5
+        width: 29
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae48b4c8180f94d40a3f66e15d554dcf
+      internalID: 940686766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_122
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 6
+        width: 25
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c843989fbb2e874abeda8735a0f5ce2
+      internalID: -1715773035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_123
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 6
+        width: 26
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 299120c760e15274085f70bdb9a7ce6e
+      internalID: -1030925993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_124
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 6
+        width: 25
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a905a2e2255ef1840a8cc9159508e818
+      internalID: -900285703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_125
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 6
+        width: 26
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4009cbfb2ea6233429380412bde1a0b7
+      internalID: -509991161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_126
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 6
+        width: 24
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7de4ccbd102fd44f8a7db25f113ccc2
+      internalID: -308473099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_127
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 6
+        width: 32
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13fb3a9a818a8ec4888935d4b660fc3f
+      internalID: -1595961986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_128
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 6
+        width: 39
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc6b2313fcbeb81419d556d948c586f0
+      internalID: 2056383085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_129
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 16
+        width: 35
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 210c353ba3aed3b46a25f8d616586503
+      internalID: 1816713695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_130
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 13
+        width: 43
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6addd765078ad894a9ec3bc0f29668a3
+      internalID: 77357123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_131
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 12
+        width: 52
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61f248130a55b6644964229e3f80d4b5
+      internalID: 23065977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_132
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 12
+        width: 39
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20a7fbdee20aaf542a4831b73e49e779
+      internalID: -1762935123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_133
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 59
+        width: 20
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c3d45b6fd5cda9428ff2842da11cb97
+      internalID: 850144467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_134
+      rect:
+        serializedVersion: 2
+        x: 727
+        y: 60
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 664cca6942d68774aab854ba2a59df2b
+      internalID: 1647158954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_135
+      rect:
+        serializedVersion: 2
+        x: 769
+        y: 6
+        width: 30
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 781c8c9a8bd25d54b8a3bc06dcfe935c
+      internalID: 1731177937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_136
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 6
+        width: 45
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c03b9bdc53037d146aac6ad1e032395f
+      internalID: -1128988263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_137
+      rect:
+        serializedVersion: 2
+        x: 886
+        y: 5
+        width: 48
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b1545cabaab2174cae212588cec816c
+      internalID: 177736683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_138
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 5
+        width: 30
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7eb2128a9f4a67646ab6df1e3812419d
+      internalID: -2035237937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_139
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 31
+        width: 20
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75ee14975c828a04f938978611002350
+      internalID: 1224146852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_140
+      rect:
+        serializedVersion: 2
+        x: 727
+        y: 33
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58c71a002cdc68b489acb317eba2b447
+      internalID: 102489741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_141
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 3
+        width: 20
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bd89866445c21c4ba6e624f48775379
+      internalID: -134282815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: averagemale02_142
+      rect:
+        serializedVersion: 2
+        x: 727
+        y: 6
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab67a7106dc77774d82ec18436cdc600
+      internalID: -448889114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 541f5436925ca724c90dfe0185c11b5b
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      averagemale02_0: 924771303
+      averagemale02_1: -455186588
+      averagemale02_10: 851788212
+      averagemale02_100: -1683648533
+      averagemale02_101: 1772522113
+      averagemale02_102: -1128300209
+      averagemale02_103: 1384456126
+      averagemale02_104: 1241156591
+      averagemale02_105: 1039733845
+      averagemale02_106: -725304664
+      averagemale02_107: -409829768
+      averagemale02_108: 330533047
+      averagemale02_109: -1818133288
+      averagemale02_11: -2125355434
+      averagemale02_110: -838991723
+      averagemale02_111: 456703263
+      averagemale02_112: 1031389122
+      averagemale02_113: -611704504
+      averagemale02_114: -1661822117
+      averagemale02_115: -1978399754
+      averagemale02_116: 2133358806
+      averagemale02_117: -1941537512
+      averagemale02_118: -1869295200
+      averagemale02_119: 1778531254
+      averagemale02_12: -919072642
+      averagemale02_120: -126130170
+      averagemale02_121: 940686766
+      averagemale02_122: -1715773035
+      averagemale02_123: -1030925993
+      averagemale02_124: -900285703
+      averagemale02_125: -509991161
+      averagemale02_126: -308473099
+      averagemale02_127: -1595961986
+      averagemale02_128: 2056383085
+      averagemale02_129: 1816713695
+      averagemale02_13: -42330393
+      averagemale02_130: 77357123
+      averagemale02_131: 23065977
+      averagemale02_132: -1762935123
+      averagemale02_133: 850144467
+      averagemale02_134: 1647158954
+      averagemale02_135: 1731177937
+      averagemale02_136: -1128988263
+      averagemale02_137: 177736683
+      averagemale02_138: -2035237937
+      averagemale02_139: 1224146852
+      averagemale02_14: -1496055851
+      averagemale02_140: 102489741
+      averagemale02_141: -134282815
+      averagemale02_142: -448889114
+      averagemale02_15: -1558443594
+      averagemale02_16: -839731779
+      averagemale02_17: -2112191874
+      averagemale02_18: 429383569
+      averagemale02_19: 899169689
+      averagemale02_2: 1310936294
+      averagemale02_20: 990098780
+      averagemale02_21: -1851110100
+      averagemale02_22: 1213469867
+      averagemale02_23: 652524098
+      averagemale02_24: -1137026039
+      averagemale02_25: 1266960156
+      averagemale02_26: 1624508837
+      averagemale02_27: 648519459
+      averagemale02_28: -102779029
+      averagemale02_29: -1349574646
+      averagemale02_3: -2112423862
+      averagemale02_30: -1878411270
+      averagemale02_31: -438683121
+      averagemale02_32: 356283494
+      averagemale02_33: 1730663778
+      averagemale02_34: 135454976
+      averagemale02_35: -340461045
+      averagemale02_36: -262064203
+      averagemale02_37: -1722337032
+      averagemale02_38: 810997701
+      averagemale02_39: 1544868523
+      averagemale02_4: -380660848
+      averagemale02_40: 572355503
+      averagemale02_41: -842105702
+      averagemale02_42: 1076842901
+      averagemale02_43: 1775852752
+      averagemale02_44: -1125219488
+      averagemale02_45: -1724999341
+      averagemale02_46: 1626536406
+      averagemale02_47: -498999718
+      averagemale02_48: 983369891
+      averagemale02_49: -557925378
+      averagemale02_5: 1943382665
+      averagemale02_50: 303889477
+      averagemale02_51: 1371084473
+      averagemale02_52: 880324911
+      averagemale02_53: -47733042
+      averagemale02_54: -724247866
+      averagemale02_55: -1876035998
+      averagemale02_56: -2143978559
+      averagemale02_57: -276168938
+      averagemale02_58: 917815158
+      averagemale02_59: -1879281608
+      averagemale02_6: 1217804711
+      averagemale02_60: 1105551225
+      averagemale02_61: -731238130
+      averagemale02_62: -1426277861
+      averagemale02_63: -453973758
+      averagemale02_64: -847551616
+      averagemale02_65: -1089451159
+      averagemale02_66: 469564950
+      averagemale02_67: -57531570
+      averagemale02_68: -2012272230
+      averagemale02_69: 1475685919
+      averagemale02_7: -941547844
+      averagemale02_70: -1727565496
+      averagemale02_71: -350240771
+      averagemale02_72: 1988737081
+      averagemale02_73: 1642700988
+      averagemale02_74: 570395338
+      averagemale02_75: 291867606
+      averagemale02_76: 227557889
+      averagemale02_77: -1088569446
+      averagemale02_78: 920326407
+      averagemale02_79: 1853685813
+      averagemale02_8: -1445926976
+      averagemale02_80: -576454835
+      averagemale02_81: -526789156
+      averagemale02_82: 1938259366
+      averagemale02_83: 1895071063
+      averagemale02_84: -917593998
+      averagemale02_85: -229466631
+      averagemale02_86: 1611046220
+      averagemale02_87: -1545030119
+      averagemale02_88: 1517040983
+      averagemale02_89: 1059941828
+      averagemale02_9: -2054630213
+      averagemale02_90: 2115222280
+      averagemale02_91: -732136104
+      averagemale02_92: 604081693
+      averagemale02_93: 2015738579
+      averagemale02_94: 1641248810
+      averagemale02_95: -781378117
+      averagemale02_96: 1322780976
+      averagemale02_97: -1132621100
+      averagemale02_98: 869637177
+      averagemale02_99: 2024616870
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

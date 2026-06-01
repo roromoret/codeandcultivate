@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5982846819266589222}
   - component: {fileID: 4336548450431856313}
+  - component: {fileID: 754138785645132593}
   m_Layer: 0
   m_Name: berries world grown (2)
   m_TagString: Untagged
@@ -87,6 +88,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &754138785645132593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2497862057465663779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a3d0e6f285e40fab16e31f32f2e32f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yOffset: 0
 --- !u!1 &4629646734067149280
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,6 +111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8266576545696811701}
   - component: {fileID: 5489181424767601824}
+  - component: {fileID: 149453238891961607}
   m_Layer: 0
   m_Name: berries world grown (1)
   m_TagString: Untagged
@@ -162,7 +177,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 0a45cae94aba5564ca114206f670e033, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -174,6 +189,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &149453238891961607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4629646734067149280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a3d0e6f285e40fab16e31f32f2e32f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yOffset: 0
 --- !u!1 &4955903109236295563
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,8 +231,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5411786123776248187}
   - {fileID: 8266576545696811701}
+  - {fileID: 5411786123776248187}
   - {fileID: 5982846819266589222}
   m_Father: {fileID: 3731096803707402558}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -218,6 +246,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5411786123776248187}
   - component: {fileID: 2780049779066457119}
+  - component: {fileID: 7045364533411918377}
   m_Layer: 0
   m_Name: berries world grown
   m_TagString: Untagged
@@ -283,7 +312,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 0a45cae94aba5564ca114206f670e033, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -295,6 +324,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7045364533411918377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7622762071094419935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a3d0e6f285e40fab16e31f32f2e32f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yOffset: 0
 --- !u!1001 &2281186235887597980
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -357,6 +399,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7369240182718751520, guid: 37f350e1df14f9043ad6506c8b3c52e6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3682393234878733824}
+    - targetCorrespondingSourceObject: {fileID: 8811464099310761988, guid: 37f350e1df14f9043ad6506c8b3c52e6, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 4415975735441284269}
   m_SourcePrefab: {fileID: 100100000, guid: 37f350e1df14f9043ad6506c8b3c52e6, type: 3}
 --- !u!4 &3731096803707402558 stripped
 Transform:
@@ -368,12 +413,30 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5451190424031721239, guid: 37f350e1df14f9043ad6506c8b3c52e6, type: 3}
   m_PrefabInstance: {fileID: 2281186235887597980}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 7341145716662813080}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7341145716662813080 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8811464099310761988, guid: 37f350e1df14f9043ad6506c8b3c52e6, type: 3}
+  m_PrefabInstance: {fileID: 2281186235887597980}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4415975735441284269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7341145716662813080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52b491393cd54cbab34b187a98cc16ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  superPriorityOrder: 10000
 --- !u!1 &8785584085019613884 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7369240182718751520, guid: 37f350e1df14f9043ad6506c8b3c52e6, type: 3}

@@ -39,4 +39,31 @@ public class WalkBlock : ExecutableBlock
 
         highlightOutline.enabled = false;
     }
+
+    // Saves the direction in the code block for later restoration
+
+    public override BlockSaveData GetBlockSaveData()
+    {
+        var data = new BlockSaveData { blockType = GetType().Name };
+        data.blockParams.Add(directionDropdown != null ? directionDropdown.value.ToString() : "0");
+        return data;
+    }
+
+    public override void RestoreFromBlockSaveData(BlockSaveData data)
+    {
+        if (directionDropdown != null && data.blockParams.Count > 0
+            && int.TryParse(data.blockParams[0], out int val))
+            directionDropdown.value = val;
+    }
+
+
+
+
+
+
+
+
+
+
+
 }

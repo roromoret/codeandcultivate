@@ -102,7 +102,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Helper
+  m_text: Farmhand
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4130ee488a611334382eb3e5562e1d2c, type: 2}
   m_sharedMaterial: {fileID: 6827663880316469607, guid: 4130ee488a611334382eb3e5562e1d2c, type: 2}
@@ -111,8 +111,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278239777
-  m_fontColor: {r: 0.12818487, g: 0.7607843, b: 0, a: 1}
+    rgba: 4279146852
+  m_fontColor: {r: 0.39292493, g: 0.5990566, b: 0.05368902, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -466,7 +466,7 @@ GameObject:
   - component: {fileID: 5516037572698913366}
   - component: {fileID: 6499858185020618736}
   m_Layer: 0
-  m_Name: Helper
+  m_Name: Farmhand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

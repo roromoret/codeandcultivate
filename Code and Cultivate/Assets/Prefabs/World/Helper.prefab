@@ -571,7 +571,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   farmerAnimator: {fileID: 1437081600398854310}
   visualContainer: {fileID: 2581018069105967488}
-  moveSpeed: 3
+  moveSpeed: 2.5
   errorTextUI: {fileID: 664710014957542835}
   errorAudioSource: {fileID: 7301598230420181458}
   stunDuration: 2

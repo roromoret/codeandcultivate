@@ -1,7 +1,5 @@
 using System;
 using System.Collections;
-using NUnit.Framework;
-using UnityEditor;
 using UnityEngine;
 
 public class WeatherManager : MonoBehaviour

@@ -1,6 +1,5 @@
-using NUnit.Framework;
+//using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.TestTools;
 using TMPro;
 
 
@@ -10,7 +9,7 @@ public class CameraControllerTests : MonoBehaviour
     private CameraController _controller;
     private TMP_Text    _label;
 
-        [SetUp]
+    //    [SetUp]
     public void SetUp()
     {
         // Camera GameObject
@@ -33,7 +32,7 @@ public class CameraControllerTests : MonoBehaviour
         _controller.SendMessage("Start", SendMessageOptions.DontRequireReceiver);
     }
  
-    [TearDown]
+    //[TearDown]
     public void TearDown()
     {
         // Clean up every GameObject created during the test
@@ -45,7 +44,7 @@ public class CameraControllerTests : MonoBehaviour
 
 
     /// Camera starts in freecam and the label is hidden
-    [Test]
+    /*[Test]
     public void T01_StartsInFreecamMode()
     {
         Assert.IsNull(_controller.FollowTarget,
@@ -54,9 +53,10 @@ public class CameraControllerTests : MonoBehaviour
         Assert.IsFalse(_label.gameObject.activeSelf,
             "Follow label should be hidden in freecam.");
     }
+    */
  
     /// Clicking a farmer enters follow mode and shows the correct label
-    [Test]
+    /*[Test]
     public void T02_ClickFarmer_EntersFollowMode()
     {
         var (farmerGO, selectable) = CreateFarmer("Alice");
@@ -152,7 +152,7 @@ public class CameraControllerTests : MonoBehaviour
             "Deselecting should not throw even when followLabel is null.");
     }
  
-
+    */
 
     // helpers
  

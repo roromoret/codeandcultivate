@@ -4,61 +4,78 @@ using TMPro;
 
 public class MainMenuUI : MonoBehaviour
 {
-    [SerializeField] private Button newGameButton;
-    [SerializeField] private Button loadGameButton;
+    [System.Serializable]
+    public class SaveSlotUI
+    {
+        public TextMeshProUGUI infoText;
+        public Button actionButton;
+        public TextMeshProUGUI buttonLabel;
+        public Button deleteButton;
+    }
+
+    [SerializeField] private SaveSlotUI[] slots = new SaveSlotUI[SaveManager.MAX_SLOTS];
     [SerializeField] private Button quitButton;
-    [SerializeField] private TextMeshProUGUI saveInfoText;
-    
+
     private void Start()
     {
-        // Subscribe to button clicks
-        newGameButton.onClick.AddListener(OnNewGameClicked);
-        loadGameButton.onClick.AddListener(OnLoadGameClicked);
-        quitButton.onClick.AddListener(OnQuitClicked);
-        
-        // Check if save exists and update UI
-        UpdateSaveStatus();
-    }
-    
-    private void UpdateSaveStatus()
-    {
-        if (SaveManager.Instance.SaveExists())
+        for (int i = 0; i < slots.Length; i++)
         {
-            loadGameButton.interactable = true;
-            saveInfoText.text = $"Save found: {SaveManager.Instance.GetSaveInfo()}";
-            saveInfoText.color = Color.green;
+            int slotNumber = i + 1;
+            slots[i].actionButton.onClick.AddListener(() => OnSlotClicked(slotNumber));
+            slots[i].deleteButton.onClick.AddListener(() => OnDeleteClicked(slotNumber));
+        }
+
+        quitButton.onClick.AddListener(OnQuitClicked);
+        RefreshSlotUI();
+    }
+
+    private void RefreshSlotUI()
+    {
+        for (int i = 0; i < slots.Length; i++)
+        {
+            int slotNumber = i + 1;
+            bool exists = SaveManager.Instance.SlotExists(slotNumber);
+
+            slots[i].infoText.text = $"Slot {slotNumber}: {SaveManager.Instance.GetSlotInfo(slotNumber)}";
+            slots[i].buttonLabel.text = exists ? "Load" : "New Game";
+            slots[i].deleteButton.gameObject.SetActive(exists);
+        }
+    }
+
+    private void OnSlotClicked(int slot)
+    {
+        if (SaveManager.Instance.SlotExists(slot))
+        {
+            Debug.Log($"[MainMenuUI] Loading slot {slot}");
+            MenuManager.Instance.LoadGame(slot);
         }
         else
         {
-            loadGameButton.interactable = false;
-            saveInfoText.text = "No save file found";
-            saveInfoText.color = Color.red;
+            Debug.Log($"[MainMenuUI] New game in slot {slot}");
+            MenuManager.Instance.NewGame(slot);
         }
     }
-    
-    private void OnNewGameClicked()
+
+    private void OnDeleteClicked(int slot)
     {
-        Debug.Log("[MainMenuUI] New Game button pressed");
-        MenuManager.Instance.NewGame();
+        Debug.Log($"[MainMenuUI] Deleting slot {slot}");
+        SaveManager.Instance.DeleteSlot(slot);
+        RefreshSlotUI();
     }
-    
-    private void OnLoadGameClicked()
-    {
-        Debug.Log("[MainMenuUI] Load Game button pressed");
-        MenuManager.Instance.LoadGame();
-    }
-    
+
     private void OnQuitClicked()
     {
         Debug.Log("[MainMenuUI] Quit button pressed");
         MenuManager.Instance.QuitGame();
     }
-    
+
     private void OnDestroy()
     {
-        // Unsubscribe to prevent memory leaks
-        if (newGameButton != null) newGameButton.onClick.RemoveListener(OnNewGameClicked);
-        if (loadGameButton != null) loadGameButton.onClick.RemoveListener(OnLoadGameClicked);
-        if (quitButton != null) quitButton.onClick.RemoveListener(OnQuitClicked);
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (slots[i].actionButton != null) slots[i].actionButton.onClick.RemoveAllListeners();
+            if (slots[i].deleteButton != null) slots[i].deleteButton.onClick.RemoveAllListeners();
+        }
+        if (quitButton != null) quitButton.onClick.RemoveAllListeners();
     }
 }

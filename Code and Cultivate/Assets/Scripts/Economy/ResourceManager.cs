@@ -50,8 +50,7 @@ public class ResourceManager : MonoBehaviour
             return;
         }
 
-        var lookup = config.BuildLookup();
-        foreach (var kvp in lookup)
+        foreach (var kvp in _configLookup)
             _resources[kvp.Key] = Mathf.Max(0, kvp.Value.startingAmount);
 
         Debug.Log("[ResourceManager] Resources initialised");

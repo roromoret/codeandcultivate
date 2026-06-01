@@ -51,4 +51,49 @@ public class WhileBlock : ConditionalBlock
             if (childBlock != null) childBlock.ResetBlock();
         }
     }
+
+
+// Same pattern as IfElseBlock, but with only one branch
+
+public override BlockSaveData GetBlockSaveData()
+{
+    var data = new BlockSaveData { blockType = GetType().Name };
+
+    // Param 0: condition selection.
+    data.blockParams.Add(conditionDropdown != null ? conditionDropdown.value.ToString() : "0");
+
+    // Param 1: expected-state toggle.
+    data.blockParams.Add(expectedStateToggle != null ? expectedStateToggle.isOn.ToString() : "True");
+
+    // Save every block inside the while loop's body.
+    if (innerBlocksContent != null)
+        foreach (Transform child in innerBlocksContent)
+        {
+            ExecutableBlock block = child.GetComponent<ExecutableBlock>();
+            if (block != null) data.innerBlocks.Add(block.GetBlockSaveData());
+        }
+    return data;
+}
+
+public override void RestoreFromBlockSaveData(BlockSaveData data)
+{
+    // Restore dropdown.
+    if (data.blockParams.Count > 0 && conditionDropdown != null
+        && int.TryParse(data.blockParams[0], out int cond))
+        conditionDropdown.value = cond;
+
+    // Restore toggle.
+    if (data.blockParams.Count > 1 && expectedStateToggle != null)
+        expectedStateToggle.isOn = data.blockParams[1] == "True";
+
+    // Rebuild the body blocks.
+    if (innerBlocksContent != null)
+        foreach (var blockData in data.innerBlocks)
+            WorkspaceManager.Instance?.InstantiateBlock(blockData, innerBlocksContent);
+}
+
+
+
+
+
 }

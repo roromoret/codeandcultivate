@@ -74,4 +74,17 @@ public class ExecutableBlock : MonoBehaviour
             highlightOutline.enabled = false;
         }
     }
+
+    //Basic Serilization for saving/loading blocks.
+
+    public virtual BlockSaveData GetBlockSaveData()
+    => new BlockSaveData { blockType = GetType().Name };
+
+    public virtual void RestoreFromBlockSaveData(BlockSaveData data) { }
+
+
+
+
+
+
 }

@@ -54,4 +54,55 @@ public class LoopBlock : ExecutableBlock
             }
         }
     }
+
+    //LoopBlock saves its loop count ANDDDD every block inside it.
+
+    public override BlockSaveData GetBlockSaveData()
+    {
+        var data = new BlockSaveData { blockType = GetType().Name };
+        data.blockParams.Add(loopCount.ToString());
+
+        //recursively save inner blocks
+        if (innerBlocksContent != null)
+        foreach (Transform child in innerBlocksContent)
+            {
+                ExecutableBlock childBlock = child.GetComponent<ExecutableBlock>();
+                if (childBlock != null)
+                {
+                    data.innerBlocks.Add(childBlock.GetBlockSaveData());
+                }
+            }
+        return data;
+    }
+
+
+    public override void RestoreFromBlockSaveData(BlockSaveData data)
+    {
+        //Restires tge kiio ciybt (both the internal vield and the visible input field in the gui)
+        if (data.blockParams.Count > 0  && int.TryParse(data.blockParams[0], out int count))
+        {
+            loopCount = count;
+            if (loopInputField != null)
+                loopInputField.text = count.ToString();
+        }
+
+
+
+
+
+
+        //Rebuilds every nested block inside the loop (if any)
+        //Note: The WorkspaceManager handles recursion through InstantiateBlock.
+        if (innerBlocksContent != null)
+            foreach (var blockData in data.innerBlocks)
+                WorkspaceManager.Instance?.InstantiateBlock(blockData, innerBlocksContent);
+    }
 }
+
+
+
+
+
+
+
+

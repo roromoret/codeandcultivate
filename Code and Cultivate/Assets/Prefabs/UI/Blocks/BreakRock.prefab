@@ -263,6 +263,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPaletteBlock: 1
+  requiresUnlock: 1
+  unlockId: break
   parentToReturnTo: {fileID: 0}
   placeholderParent: {fileID: 0}
   isToBeDeleted: 0

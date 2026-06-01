@@ -3,10 +3,14 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 //This object need a canvas group in order to be seen by the unity drag system
-
+[RequireComponent(typeof(CanvasGroup))]
 public class DraggableBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public bool isPaletteBlock = false;
+
+    [Header("Unlock System")]
+    public bool requiresUnlock = false;
+    public string unlockId;
 
     [HideInInspector] public Transform parentToReturnTo = null;
     [HideInInspector] public Transform placeholderParent = null;
@@ -26,6 +30,56 @@ public class DraggableBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         canvasGroup = GetComponent<CanvasGroup>();
     }
 
+    void Start()
+    {
+        if (isPaletteBlock && requiresUnlock)
+        {
+            if (ShopManager.Instance != null)
+            {
+                ShopManager.Instance.OnBlockUnlocked += HandleUnlockEvent;
+
+                if (ShopManager.Instance.IsBlockUnlocked(unlockId))
+                {
+                    SetLockState(false); // Débloqué
+                }
+                else
+                {
+                    SetLockState(true);  // Bloqué (grisé)
+                }
+            }
+        }
+    }
+
+    void OnDestroy()
+    {
+        if (ShopManager.Instance != null && isPaletteBlock && requiresUnlock)
+        {
+            ShopManager.Instance.OnBlockUnlocked -= HandleUnlockEvent;
+        }
+    }
+
+    private void HandleUnlockEvent(string purchasedBlockId)
+    {
+        if (purchasedBlockId == unlockId)
+        {
+            SetLockState(false);
+        }
+    }
+
+    private void SetLockState(bool isLocked)
+    {
+        if (isLocked)
+        {
+            canvasGroup.alpha = 0.4f;
+            canvasGroup.blocksRaycasts = false;
+        }
+        else
+        {
+            canvasGroup.alpha = 1f;
+            canvasGroup.blocksRaycasts = true;
+        }
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         isToBeDeleted = false;
@@ -42,6 +96,9 @@ public class DraggableBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
             this.isPaletteBlock = false;
             wasCloned = true;
+            
+            DraggableBlock cloneScript = clone.GetComponent<DraggableBlock>();
+            if (cloneScript != null) cloneScript.requiresUnlock = false; 
         }
 
         placeholder = new GameObject("Placeholder");
@@ -55,23 +112,18 @@ public class DraggableBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
         placeholder.transform.SetSiblingIndex(this.transform.GetSiblingIndex());
 
-        // --- LA SÉCURITÉ BLINDÉE EST ICI ---
         Canvas mainCanvas = GetComponentInParent<Canvas>();
         if (mainCanvas != null)
         {
-            // 1. On force l'attachement au Canvas RACINE (ignore les sous-canvas)
             this.transform.SetParent(mainCanvas.rootCanvas.transform, true);
             this.transform.SetAsLastSibling();
             
-            // 2. On empêche le bloc de devenir microscopique
             this.transform.localScale = Vector3.one;
             
-            // 3. On remet le Z à zéro pour éviter qu'il parte derrière la caméra
             Vector3 safePos = this.transform.localPosition;
             safePos.z = 0f;
             this.transform.localPosition = safePos;
         }
-        // -----------------------------------
 
         canvasGroup.blocksRaycasts = false;
         canvasGroup.alpha = 0.8f;

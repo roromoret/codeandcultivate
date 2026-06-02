@@ -20,39 +20,45 @@ public class PauseManager : MonoBehaviour
     {
         if (Time.unscaledTime - lastToggleTime < TOGGLE_COOLDOWN) return;
 
-        if (Keyboard.current != null && Keyboard.current.pKey.wasPressedThisFrame)
+        if (Keyboard.current != null)
         {
-            lastToggleTime = Time.unscaledTime;
-            ToggleMenu();
+            if (Keyboard.current.escapeKey.wasPressedThisFrame)
+            {
+                lastToggleTime = Time.unscaledTime;
+                TogglePause();
+            }
         }
     }
 
-    private void ToggleMenu()
+    private void TogglePause()
     {
         menuOpen = !menuOpen;
 
         if (pauseMenuUI != null)
         {
             pauseMenuUI.SetActive(menuOpen);
-            Debug.Log("Pause menu " + (menuOpen ? "OPENED" : "CLOSED"));
 
-            // Control the timer and text visibility based on the pause state
-            if (speedrunTimer != null)
+            if (menuOpen)
             {
-                if (menuOpen)
+                Time.timeScale = 0f;
+                AudioListener.pause = true; //Pauses Game audio
+
+                if (speedrunTimer != null)
                 {
                     speedrunTimer.StopTimer();
                     speedrunTimer.HideActiveMessages();
                 }
-                else
+            }
+            else
+            {
+                Time.timeScale = 1f;
+                AudioListener.pause = false; //unpauses Game audio
+
+                if (speedrunTimer != null)
                 {
                     speedrunTimer.StartTimer();
                 }
             }
-        }
-        else
-        {
-            Debug.LogError("❌ Pause Menu UI is NOT assigned in the Inspector!");
         }
 
         // Cursor always visible
@@ -60,38 +66,11 @@ public class PauseManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
-    
-   
     public void Resume()   
     {
         if (pauseMenuUI != null) pauseMenuUI.SetActive(false);
         menuOpen = false;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-
-        if (speedrunTimer != null)
-        {
-            speedrunTimer.StartTimer();
-        }
-    }
-
-    public void Quit() => Application.Quit();
-
-  
-    public void PauseGame()  //Pauses Game
-    {
-        Time.timeScale = 0f;
-        AudioListener.pause = true; //Pauses Game audio
-
-        if (speedrunTimer != null)
-        {
-            speedrunTimer.StopTimer();
-            speedrunTimer.HideActiveMessages();
-        }
-    }
-
-    public void ResumeGame()  //Resumes Game
-    {
+        
         Time.timeScale = 1f;
         AudioListener.pause = false; //unpauses Game audio
 
@@ -99,5 +78,10 @@ public class PauseManager : MonoBehaviour
         {
             speedrunTimer.StartTimer();
         }
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
+
+    public void Quit() => Application.Quit();
 }

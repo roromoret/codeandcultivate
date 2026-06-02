@@ -3243,6 +3243,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460705801}
   m_CullTransparentMesh: 1
+--- !u!1 &465683651 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7699414405831774066, guid: cc5fb8a83337c4246b8df2a579bb71e2, type: 3}
+  m_PrefabInstance: {fileID: 576607511}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &481749513
 GameObject:
   m_ObjectHideFlags: 0
@@ -10838,6 +10843,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1412650723}
   - component: {fileID: 1412650722}
+  - component: {fileID: 1412650724}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -10857,7 +10863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e398c48bf2e7c472a8fff97f129a34b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 423578947}
+  pauseMenuUI: {fileID: 465683651}
   speedrunTimer: {fileID: 481749515}
 --- !u!4 &1412650723
 Transform:
@@ -10874,6 +10880,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1412650724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412650721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf1b7c8da88834b0ba31a2348c27b836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  easterEggMenuUI: {fileID: 423578947}
 --- !u!1 &1413516200
 GameObject:
   m_ObjectHideFlags: 0

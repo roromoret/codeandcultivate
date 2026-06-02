@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class AudioController : MonoBehaviour
 {
@@ -18,10 +19,16 @@ public class AudioController : MonoBehaviour
 
     void Awake()
     {
+        
+
         if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+
+            preMuteMusicVolume = PlayerPrefs.GetFloat("SavedMusicVolume", 0.5f);
+            preMuteSFXVolume = PlayerPrefs.GetFloat("SavedSFXVolume", 0.5f);
+            isMuted = PlayerPrefs.GetInt("SavedMuteState", 0) == 1;
         }
         else
         {
@@ -47,44 +54,79 @@ public class AudioController : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        StopAllCoroutines();
+        StartCoroutine(DelayedFindAndLinkUI());
+    }
+
+    private IEnumerator DelayedFindAndLinkUI()
+    {
+        yield return null;
         FindAndLinkUI();
     }
 
     void FindAndLinkUI()
     {
-        GameObject musicObj = GameObject.Find("MusicSlider");
-        if (musicObj != null)
+        Slider[] allSliders = Resources.FindObjectsOfTypeAll<Slider>();
+        foreach (Slider slider in allSliders)
         {
-            musicSlider = musicObj.GetComponent<Slider>();
-            musicSlider.onValueChanged.RemoveAllListeners(); 
-            musicSlider.onValueChanged.AddListener(SetMusicVolume);
-            musicSlider.value = preMuteMusicVolume;
+            if (slider.gameObject.name == "MusicSlider")
+            {
+                musicSlider = slider;
+                musicSlider.onValueChanged.RemoveAllListeners(); 
+                musicSlider.onValueChanged.AddListener(SetMusicVolume);
+                musicSlider.value = preMuteMusicVolume;
+                Debug.Log("🔊 Found and linked MusicSlider!");
+            }
+            else if (slider.gameObject.name == "SFXSlider")
+            {
+                sfxSlider = slider;
+                sfxSlider.onValueChanged.RemoveAllListeners();
+                sfxSlider.onValueChanged.AddListener(SetSFXVolume);
+                sfxSlider.value = preMuteSFXVolume;
+                Debug.Log("🔊 Found and linked SFXSlider!");
+            }
         }
 
-        GameObject sfxObj = GameObject.Find("SFXSlider");
-        if (sfxObj != null)
+        Canvas[] allCanvases = Resources.FindObjectsOfTypeAll<Canvas>();
+        foreach (Canvas canvas in allCanvases)
         {
-            sfxSlider = sfxObj.GetComponent<Slider>();
-            sfxSlider.onValueChanged.RemoveAllListeners();
-            sfxSlider.onValueChanged.AddListener(SetSFXVolume);
-            sfxSlider.value = preMuteSFXVolume;
-        }
-
-        GameObject muteObj = GameObject.Find("MuteButton");
-        if (muteObj != null)
-        {
-            muteButton = muteObj.GetComponent<Button>();
-            muteButton.onClick.RemoveAllListeners();
-            muteButton.onClick.AddListener(ToggleMute);
+            Transform foundMute = FindChildIncludingInactive(canvas.transform, "MuteButton");
+            if (foundMute != null)
+            {
+                muteButton = foundMute.GetComponent<Button>();
+                if (muteButton != null)
+                {
+                    muteButton.onClick.RemoveAllListeners();
+                    muteButton.onClick.AddListener(ToggleMute);
+                    Debug.Log("🔊 Successfully linked MuteButton deep inside Canvas child structure!");
+                }
+                break;
+            }
         }
         
-        SetMusicVolume(preMuteMusicVolume);
-        SetSFXVolume(preMuteSFXVolume);
+        ApplyMixerSettings();
+    }
+
+    private Transform FindChildIncludingInactive(Transform parent, string childName)
+    {
+        if (parent.name == childName) return parent;
+        
+        for (int i = 0; i < parent.childCount; i++)
+        {
+            Transform result = FindChildIncludingInactive(parent.GetChild(i), childName);
+            if (result != null) return result;
+        }
+        
+        return null;
     }
 
     public void SetMusicVolume(float sliderValue)
     {
         preMuteMusicVolume = sliderValue;
+        
+        PlayerPrefs.SetFloat("SavedMusicVolume", preMuteMusicVolume);
+        PlayerPrefs.Save();
+
         if (!isMuted)
         {
             float volume = (sliderValue <= 0.0001f) ? -80f : Mathf.Log10(sliderValue) * 20;
@@ -95,6 +137,10 @@ public class AudioController : MonoBehaviour
     public void SetSFXVolume(float sliderValue)
     {
         preMuteSFXVolume = sliderValue;
+
+        PlayerPrefs.SetFloat("SavedSFXVolume", preMuteSFXVolume);
+        PlayerPrefs.Save();
+
         if (!isMuted)
         {
             float volume = (sliderValue <= 0.0001f) ? -80f : Mathf.Log10(sliderValue) * 20;
@@ -106,6 +152,14 @@ public class AudioController : MonoBehaviour
     {
         isMuted = !isMuted;
 
+        PlayerPrefs.SetInt("SavedMuteState", isMuted ? 1 : 0);
+        PlayerPrefs.Save();
+
+        ApplyMixerSettings();
+    }
+
+    private void ApplyMixerSettings()
+    {
         if (isMuted)
         {
             myMixer.SetFloat("Music", -80f);
@@ -113,8 +167,11 @@ public class AudioController : MonoBehaviour
         }
         else
         {
-            SetMusicVolume(preMuteMusicVolume);
-            SetSFXVolume(preMuteSFXVolume);
+            float musicVol = (preMuteMusicVolume <= 0.0001f) ? -80f : Mathf.Log10(preMuteMusicVolume) * 20;
+            myMixer.SetFloat("Music", musicVol);
+
+            float sfxVol = (preMuteSFXVolume <= 0.0001f) ? -80f : Mathf.Log10(preMuteSFXVolume) * 20;
+            myMixer.SetFloat("SFX", sfxVol);
         }
     }
 }

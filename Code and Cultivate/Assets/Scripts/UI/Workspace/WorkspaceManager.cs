@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections; 
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; 
+
 
 public class WorkspaceManager : MonoBehaviour
 {
@@ -82,6 +85,30 @@ public class WorkspaceManager : MonoBehaviour
 
         return result;
     }
+    // Coroutine method.
+private IEnumerator RefreshLayoutNextFrame()
+{
+    yield return null;
+    yield return null; // waits two frames to be safe
+
+    // Rebuild from inside out (THIS IS STILL BROKEN. COME BACK TO ASAP)
+    foreach (Transform child in workspaceContent)
+    {
+        ColumnExecutor executor = child.GetComponent<ColumnExecutor>();
+        if (executor?.blocksContent != null)
+            LayoutRebuilder.ForceRebuildLayoutImmediate(executor.blocksContent as RectTransform);
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(child as RectTransform);
+    }
+
+    Canvas.ForceUpdateCanvases();
+    LayoutRebuilder.ForceRebuildLayoutImmediate(workspaceContent as RectTransform);
+
+    if (paginator != null) paginator.RefreshPagination();
+}
+
+
+
 
     public void RestoreFromSaveData(List<ColumnSaveData> columns)
     {
@@ -121,9 +148,11 @@ public class WorkspaceManager : MonoBehaviour
             }
         }
         // Force Unity to rebuild all canvas layouts so restored blocks render correctly
-        Canvas.ForceUpdateCanvases();
+        StartCoroutine(RefreshLayoutNextFrame());
     }
 
+
+    //I NEED TO REDO THIS AS WELL STILL BROKEN
     public void InstantiateBlock(BlockSaveData data, Transform parent)
     {
         GameObject prefab = GetBlockPrefab(data.blockType);

@@ -42,7 +42,7 @@ public class SaveManager : MonoBehaviour
             Debug.LogError($"[SaveManager] Invalid slot: {slot}");
             return;
         }
-
+    
         Farmer mainFarmer = FarmerSpawner.Instance?.Farmers.Count > 0
             ? FarmerSpawner.Instance.Farmers[0] : null;
 
@@ -70,6 +70,8 @@ public class SaveManager : MonoBehaviour
             data.workspaceColumns = WorkspaceManager.Instance.GetSaveData();
             Debug.Log($"[SaveManager] Saving {data.workspaceColumns.Count} workspace columns");
         }
+
+        data.saveName = $"Slot {slot}";
 
         string json = JsonConvert.SerializeObject(data, Formatting.Indented);
         File.WriteAllText(GetSlotPath(slot), json);
@@ -106,6 +108,9 @@ public class SaveManager : MonoBehaviour
             Debug.LogError($"[SaveManager] Error loading slot {slot}: {e.Message}");
         }
     }
+
+
+
 
     // Apply previously loaded data to the game (called after scene loads)
     public void ApplyLoadedData()
@@ -179,6 +184,7 @@ public class SaveManager : MonoBehaviour
         }
     }
 
+
     // Delete a specific slot
     public void DeleteSlot(int slot)
     {
@@ -191,4 +197,31 @@ public class SaveManager : MonoBehaviour
             Debug.Log($"[SaveManager] Slot {slot} deleted");
         }
     }
+
+    //This finds what the most recent slot is for the "Quick Load" button.
+    // Returns the slot number of the most recently written save, or -1 if none exist
+    public int GetMostRecentSlot()
+    {
+        int mostRecentSlot = -1;
+        System.DateTime mostRecentTime = System.DateTime.MinValue;
+
+        for (int i = 1; i <= MAX_SLOTS; i++)
+        {
+            if (!SlotExists(i)) continue;
+            System.DateTime writeTime = File.GetLastWriteTime(GetSlotPath(i));
+            if (writeTime > mostRecentTime)
+            {
+                mostRecentTime = writeTime;
+                mostRecentSlot = i;
+            }
+        }
+
+        return mostRecentSlot;
+}
+
+
+
+
+
+
 }

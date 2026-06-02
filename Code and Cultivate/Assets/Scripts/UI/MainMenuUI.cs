@@ -15,6 +15,7 @@ public class MainMenuUI : MonoBehaviour
 
     [SerializeField] private SaveSlotUI[] slots = new SaveSlotUI[SaveManager.MAX_SLOTS];
     [SerializeField] private Button quitButton;
+    [SerializeField] private Button quickLoadButton;
 
     private void Start()
     {
@@ -24,6 +25,9 @@ public class MainMenuUI : MonoBehaviour
             slots[i].actionButton.onClick.AddListener(() => OnSlotClicked(slotNumber));
             slots[i].deleteButton.onClick.AddListener(() => OnDeleteClicked(slotNumber));
         }
+
+if (quickLoadButton != null)
+            quickLoadButton.onClick.AddListener(OnQuickLoadClicked);
 
         quitButton.onClick.AddListener(OnQuitClicked);
         RefreshSlotUI();
@@ -36,10 +40,13 @@ public class MainMenuUI : MonoBehaviour
             int slotNumber = i + 1;
             bool exists = SaveManager.Instance.SlotExists(slotNumber);
 
-            slots[i].infoText.text = $"Slot {slotNumber}: {SaveManager.Instance.GetSlotInfo(slotNumber)}";
+            slots[i].infoText.text = SaveManager.Instance.GetSlotInfo(slotNumber);
             slots[i].buttonLabel.text = exists ? "Load" : "New Game";
             slots[i].deleteButton.gameObject.SetActive(exists);
         }
+
+        if (quickLoadButton != null)
+            quickLoadButton.gameObject.SetActive(SaveManager.Instance.AnySaveExists());
     }
 
     private void OnSlotClicked(int slot)
@@ -55,6 +62,17 @@ public class MainMenuUI : MonoBehaviour
             MenuManager.Instance.NewGame(slot);
         }
     }
+
+        private void OnQuickLoadClicked()
+    {
+        int slot = SaveManager.Instance.GetMostRecentSlot();
+        if (slot == -1) return;
+
+        Debug.Log($"[MainMenuUI] Quick loading most recent slot {slot}");
+        MenuManager.Instance.LoadGame(slot);
+    }
+
+
 
     private void OnDeleteClicked(int slot)
     {
@@ -76,6 +94,8 @@ public class MainMenuUI : MonoBehaviour
             if (slots[i].actionButton != null) slots[i].actionButton.onClick.RemoveAllListeners();
             if (slots[i].deleteButton != null) slots[i].deleteButton.onClick.RemoveAllListeners();
         }
+
         if (quitButton != null) quitButton.onClick.RemoveAllListeners();
+        if (quickLoadButton != null) quickLoadButton.onClick.RemoveAllListeners();
     }
 }

@@ -26,7 +26,7 @@ public class SaveData
     public SaveData()
     {
         resources = new List<ResourceData>();
-        saveDate = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        saveDate = System.DateTime.Now.ToString("dd/MM");
         saveName = "Save " + saveDate;
     }
 }

@@ -54,16 +54,12 @@ public class SaveData
     public class ColumnSaveData
     {
         public List<BlockSaveData> blocks;
+        public string assignedFarmerName; // Name of the farmer assigned to this column, if any.
         public ColumnSaveData()
         {
             blocks = new List<BlockSaveData>();
         }
     }
-
-
-
-
-
 
 
 

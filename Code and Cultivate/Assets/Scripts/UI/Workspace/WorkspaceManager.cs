@@ -120,6 +120,8 @@ public class WorkspaceManager : MonoBehaviour
                 }
             }
         }
+        // Force Unity to rebuild all canvas layouts so restored blocks render correctly
+        Canvas.ForceUpdateCanvases();
     }
 
     public void InstantiateBlock(BlockSaveData data, Transform parent)

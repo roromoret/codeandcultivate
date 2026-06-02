@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class PauseManager : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenuUI; 
+    [SerializeField] private SpeedrunTimer speedrunTimer; // References speedrun timer script
 
     private bool menuOpen = false;
     private float lastToggleTime = 0f;
@@ -34,6 +35,20 @@ public class PauseManager : MonoBehaviour
         {
             pauseMenuUI.SetActive(menuOpen);
             Debug.Log("Pause menu " + (menuOpen ? "OPENED" : "CLOSED"));
+
+            // Control the timer and text visibility based on the pause state
+            if (speedrunTimer != null)
+            {
+                if (menuOpen)
+                {
+                    speedrunTimer.StopTimer();
+                    speedrunTimer.HideActiveMessages();
+                }
+                else
+                {
+                    speedrunTimer.StartTimer();
+                }
+            }
         }
         else
         {
@@ -53,6 +68,11 @@ public class PauseManager : MonoBehaviour
         menuOpen = false;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+
+        if (speedrunTimer != null)
+        {
+            speedrunTimer.StartTimer();
+        }
     }
 
     public void Quit() => Application.Quit();
@@ -62,11 +82,22 @@ public class PauseManager : MonoBehaviour
     {
         Time.timeScale = 0f;
         AudioListener.pause = true; //Pauses Game audio
+
+        if (speedrunTimer != null)
+        {
+            speedrunTimer.StopTimer();
+            speedrunTimer.HideActiveMessages();
+        }
     }
 
     public void ResumeGame()  //Resumes Game
     {
         Time.timeScale = 1f;
         AudioListener.pause = false; //unpauses Game audio
+
+        if (speedrunTimer != null)
+        {
+            speedrunTimer.StartTimer();
+        }
     }
 }

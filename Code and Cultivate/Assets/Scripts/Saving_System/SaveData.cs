@@ -26,7 +26,7 @@ public class SaveData
     public SaveData()
     {
         resources = new List<ResourceData>();
-        saveDate = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        saveDate = System.DateTime.Now.ToString("dd/MM");
         saveName = "Save " + saveDate;
     }
 }
@@ -54,16 +54,12 @@ public class SaveData
     public class ColumnSaveData
     {
         public List<BlockSaveData> blocks;
+        public string assignedFarmerName; // Name of the farmer assigned to this column, if any.
         public ColumnSaveData()
         {
             blocks = new List<BlockSaveData>();
         }
     }
-
-
-
-
-
 
 
 

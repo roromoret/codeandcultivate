@@ -2,16 +2,14 @@
 using TMPro;
 using UnityEngine.UI;
 
-//Base file for the while and if blocks 
-
-
-//All the conditions between wich the player can choose
 public enum ConditionType 
 { 
-    AlwaysTrue, 
-    AlwaysFalse, 
-    FacingWall, 
-    CropReady 
+    WallNorth, 
+    WallSouth, 
+    WallWest, 
+    WallEast, 
+    PlantableSoil, 
+    HarvestableSoil 
 }
 
 public abstract class ConditionalBlock : ExecutableBlock
@@ -20,7 +18,6 @@ public abstract class ConditionalBlock : ExecutableBlock
     public TMP_Dropdown conditionDropdown;
     public Toggle expectedStateToggle;
     
-    //Call to all the functions to check conditions
     protected bool EvaluateCondition()
     {
         if (conditionDropdown == null) return false;
@@ -31,21 +28,120 @@ public abstract class ConditionalBlock : ExecutableBlock
 
         switch (currentCondition)
         {
-            case ConditionType.AlwaysTrue: 
-                rawConditionResult = true; break;
-            case ConditionType.AlwaysFalse: 
-                rawConditionResult = false; break;
-            case ConditionType.FacingWall:
-                rawConditionResult = false; break;
-            case ConditionType.CropReady:
-                rawConditionResult = true; break;
+            case ConditionType.WallNorth: 
+                rawConditionResult = CheckWallNorth(); 
+                break;
+            case ConditionType.WallSouth: 
+                rawConditionResult = CheckWallSouth(); 
+                break;
+            case ConditionType.WallWest:
+                rawConditionResult = CheckWallWest(); 
+                break;
+            case ConditionType.WallEast:
+                rawConditionResult = CheckWallEast(); 
+                break;
+            case ConditionType.PlantableSoil:
+                rawConditionResult = CheckPlantableSoil(); 
+                break;
+            case ConditionType.HarvestableSoil:
+                rawConditionResult = CheckHarvestableSoil(); 
+                break;
         }
 
         if (expectedStateToggle == null) 
         {
             return rawConditionResult;
         }
-        // Compare the result wich what the player want (output or !output)
+        
         return rawConditionResult == expectedStateToggle.isOn;
+    }
+
+    private Farmer GetTargetFarmer()
+    {
+        ColumnExecutor parentColumn = GetComponentInParent<ColumnExecutor>();
+        
+        if (parentColumn == null)
+        {
+            return null;
+        }
+
+        if (FarmerAssignment.Instance != null)
+        {
+            return FarmerAssignment.Instance.GetAssigned(parentColumn);
+        }
+        
+        return null;
+    }
+
+    private Vector2Int GetFarmerTile()
+    {
+        Farmer farmer = GetTargetFarmer();
+        if (farmer == null) return Vector2Int.zero;
+        
+        return WorldGrid.Instance.WorldToTile(farmer.transform.position);
+    }
+
+    private bool IsWallAt(Vector2Int coords)
+    {
+        if (!TileDataManager.Instance.TryGetTile(coords, out TileData tile))
+        {
+            return true;
+        }
+        
+        return tile.Type == TileType.Rock;
+    }
+
+    private bool CheckWallNorth()
+    {
+        Vector2Int farmerPos = GetFarmerTile();
+        return IsWallAt(farmerPos + new Vector2Int(0, 1)); 
+    }
+
+    private bool CheckWallSouth()
+    {
+        Vector2Int farmerPos = GetFarmerTile();
+        return IsWallAt(farmerPos + new Vector2Int(0, -1));
+    }
+
+    private bool CheckWallEast()
+    {
+        Vector2Int farmerPos = GetFarmerTile();
+        return IsWallAt(farmerPos + new Vector2Int(1, 0));
+    }
+
+    private bool CheckWallWest()
+    {
+        Vector2Int farmerPos = GetFarmerTile();
+        return IsWallAt(farmerPos + new Vector2Int(-1, 0));
+    }
+
+    private bool CheckPlantableSoil()
+    {
+        Vector2Int farmerPos = GetFarmerTile();
+        
+        if (!TileDataManager.Instance.TryGetTile(farmerPos, out TileData tile))
+        {
+            return false;
+        }
+
+        return tile.Type == TileType.Normal && tile.Occupant == OccupantType.None;
+    }
+
+    private bool CheckHarvestableSoil()
+    {
+        Vector2Int farmerPos = GetFarmerTile();
+        
+        if (!TileDataManager.Instance.TryGetTile(farmerPos, out TileData tile))
+        {
+            return false;
+        }
+
+        if (tile.Occupant != OccupantType.Crop)
+        {
+            return false;
+        }
+
+        var cropData = CropManager.Instance.GetCropData(farmerPos);
+        return cropData != null && cropData.IsMature;
     }
 }

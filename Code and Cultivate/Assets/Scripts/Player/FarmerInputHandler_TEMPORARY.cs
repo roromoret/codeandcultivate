@@ -34,11 +34,9 @@ public class FarmerInputHandler_TEMPORARY : MonoBehaviour
             if (keyboard.leftArrowKey.isPressed) farmer.MoveWest();
             if (keyboard.downArrowKey.isPressed) farmer.MoveSouth();
             if (keyboard.rightArrowKey.isPressed) farmer.MoveEast();
-            if (keyboard.digit1Key.isPressed) farmer.Plant(0); // Fusion : On garde le paramètre 0 (Carotte par défaut) de ta branche main
+            if (keyboard.digit1Key.isPressed) farmer.Plant(0);
             if (keyboard.digit2Key.isPressed) farmer.Harvest();
         }
-
-        if (keyboard.tKey.wasPressedThisFrame) TurnManager.Instance.PassTurn();
 
         // Fusion : On conserve l'ajout de ton collègue pour faire spawn de nouveaux fermiers
         if (keyboard.fKey.wasPressedThisFrame) FarmerSpawner.Instance?.TrySpawnAdditionalFarmer(WorldGenerator_GetCenter());

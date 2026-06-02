@@ -94,4 +94,14 @@ public class SpeedrunTimer : MonoBehaviour
     public void StartTimer() => isRunning = true;
     public void StopTimer() => isRunning = false;
     public void ResetTimer() => elapsedTime = 0f;
+
+    // Helper method to clear out UI alerts during manual pauses
+    public void HideActiveMessages()
+    {
+        CancelInvoke("HideOneMinuteTaunt");
+        CancelInvoke("HideCheatTaunt");
+        if (tauntText != null) tauntText.gameObject.SetActive(false);
+        if (cheatTauntText != null) cheatTauntText.gameObject.SetActive(false);
+    }
+
 }

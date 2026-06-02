@@ -14,9 +14,69 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buyItems:
   - displayName: Farmhand
-    icon: {fileID: 21300000, guid: 1d18d24a2e2f390449f503c60a2debfd, type: 3}
+    icon: {fileID: -941547844, guid: 3417b4b6899644341b04eb7f8c3ae98b, type: 3}
     buyPrice: 10
     effect: 1
+    resourceToGive: 0
+    amountToGivePerPurchase: 1
+    blockUnlockId: 
+    isOneTimePurchase: 0
+  - displayName: Apple
+    icon: {fileID: 21300000, guid: afaa3844f50f44a59b07dfe1436a22d6, type: 3}
+    buyPrice: 20
+    effect: 2
+    resourceToGive: 1
+    amountToGivePerPurchase: 1
+    blockUnlockId: 
+    isOneTimePurchase: 0
+  - displayName: Berry
+    icon: {fileID: 21300000, guid: 1eaf6d10223aeb6479159dacf8f76ea3, type: 3}
+    buyPrice: 20
+    effect: 2
+    resourceToGive: 3
+    amountToGivePerPurchase: 1
+    blockUnlockId: 
+    isOneTimePurchase: 0
+  - displayName: Carrot
+    icon: {fileID: 21300000, guid: 1ae861683d08a5b4cbc3ff045a17377d, type: 3}
+    buyPrice: 20
+    effect: 2
+    resourceToGive: 2
+    amountToGivePerPurchase: 1
+    blockUnlockId: 
+    isOneTimePurchase: 0
+  - displayName: Define Block
+    icon: {fileID: 21300000, guid: 1d18d24a2e2f390449f503c60a2debfd, type: 3}
+    buyPrice: 50
+    effect: 3
+    resourceToGive: 2
+    amountToGivePerPurchase: 1
+    blockUnlockId: define
+    isOneTimePurchase: 1
+  - displayName: Call Block
+    icon: {fileID: 21300000, guid: 1d18d24a2e2f390449f503c60a2debfd, type: 3}
+    buyPrice: 50
+    effect: 3
+    resourceToGive: 2
+    amountToGivePerPurchase: 1
+    blockUnlockId: call
+    isOneTimePurchase: 1
+  - displayName: Break Block
+    icon: {fileID: 21300000, guid: 1d18d24a2e2f390449f503c60a2debfd, type: 3}
+    buyPrice: 200
+    effect: 3
+    resourceToGive: 2
+    amountToGivePerPurchase: 1
+    blockUnlockId: break
+    isOneTimePurchase: 1
+  - displayName: While Loop
+    icon: {fileID: 21300000, guid: 1d18d24a2e2f390449f503c60a2debfd, type: 3}
+    buyPrice: 100
+    effect: 3
+    resourceToGive: 2
+    amountToGivePerPurchase: 1
+    blockUnlockId: while
+    isOneTimePurchase: 1
   sellItems:
   - resourceType: 1
     sellPricePerUnit: 10

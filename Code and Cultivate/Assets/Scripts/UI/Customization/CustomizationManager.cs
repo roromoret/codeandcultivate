@@ -44,20 +44,35 @@ public class CustomizationManager : MonoBehaviour
 
     public void RefreshDropdown()
     {
-        if (FarmerAssignment.Instance == null) return;
-        _availableFarmers = FarmerAssignment.Instance.GetAvailableFarmers(null); 
+        _availableFarmers = new List<Farmer>(FindObjectsOfType<Farmer>());
+
         farmerDropdown.ClearOptions();
         List<string> labels = new List<string>();
-        foreach (Farmer farmer in _availableFarmers) { labels.Add(farmer.gameObject.name); }
+
+        for (int i = 0; i < _availableFarmers.Count; i++)
+        {
+            string farmerName = _availableFarmers[i].gameObject.name;
+            if (farmerName.Contains("Clone")) 
+            {
+                farmerName = $"Farmhand {i + 1}";
+            }
+            labels.Add(farmerName); 
+        }
+
         if (labels.Count > 0)
         {
             farmerDropdown.AddOptions(labels);
+            
             farmerDropdown.onValueChanged.RemoveAllListeners();
             farmerDropdown.onValueChanged.AddListener(OnDropdownChanged);
+            
             farmerDropdown.value = 0;
             OnDropdownChanged(0);
         }
-        else { farmerDropdown.AddOptions(new List<string> { "(No Farmer found)" }); }
+        else
+        {
+            farmerDropdown.AddOptions(new List<string> { "(No Farmer found)" });
+        }
     }
 
     private void OnDropdownChanged(int index)

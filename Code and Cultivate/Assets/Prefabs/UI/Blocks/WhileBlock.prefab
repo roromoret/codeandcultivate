@@ -576,27 +576,33 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 8814069916409474199}
-  m_Template: {fileID: 4276682020819899906}
-  m_CaptionText: {fileID: 3718284233696175403}
+  m_TargetGraphic: {fileID: 0}
+  m_Template: {fileID: 0}
+  m_CaptionText: {fileID: 0}
   m_CaptionImage: {fileID: 0}
   m_Placeholder: {fileID: 0}
-  m_ItemText: {fileID: 710998321259253175}
+  m_ItemText: {fileID: 0}
   m_ItemImage: {fileID: 0}
   m_Value: 0
   m_MultiSelect: 0
   m_Options:
     m_Options:
-    - m_Text: Always True
+    - m_Text: Wall North
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: Always False
+    - m_Text: Wall South
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: Facing Wall
+    - m_Text: Wall West
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: Crop Ready
+    - m_Text: Wall East
+      m_Image: {fileID: 0}
+      m_Color: {r: 1, g: 1, b: 1, a: 1}
+    - m_Text: Plantable Soil
+      m_Image: {fileID: 0}
+      m_Color: {r: 1, g: 1, b: 1, a: 1}
+    - m_Text: Harvestable Soil
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_OnValueChanged:
@@ -899,6 +905,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPaletteBlock: 1
+  requiresUnlock: 1
+  unlockId: while
   parentToReturnTo: {fileID: 0}
   placeholderParent: {fileID: 0}
   isToBeDeleted: 0

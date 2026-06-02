@@ -46,7 +46,7 @@ if (quickLoadButton != null)
         }
 
         if (quickLoadButton != null)
-            quickLoadButton.gameObject.SetActive(SaveManager.Instance.AnySaveExists());
+            quickLoadButton.interactable = SaveManager.Instance.AnySaveExists();
     }
 
     private void OnSlotClicked(int slot)

@@ -81,6 +81,8 @@ public class CameraController : MonoBehaviour
 
     private void Movement() // WASD to move camera
     {
+        if (FunctionDefinitionBlock.isTyping) return;
+        
         var keyboard = Keyboard.current;
         if (keyboard == null) return;
 
